@@ -14,7 +14,7 @@ class NotificationService {
   // Tatlı / flörtöz / motive edici mesajlar (Şükran'a özel)
   static const List<Map<String, String>> _messages = [
     {'t': 'Günaydın hanımefendi ☀️', 'b': 'Bugün ne kadar güzelsiniz böyle! Bir de YÖKDİL kelimelerine bakınca büsbütün parlayacaksın 💛'},
-    {'t': 'Şükran\'a özel not 💌', 'b': 'Adli tıbbın en titiz, en tatlı çalışanı; en akıllı doktora adayı! Bugün 5 kelime senden korksun 😌'},
+    {'t': 'Şükran\'a özel not 💌', 'b': 'Dünyanın en tatlı hemşiresi, en akıllı doktora adayı! Bugün 5 kelime senden korksun 😌'},
     {'t': 'Bir çalışma molası? 🍫', 'b': 'Sen çalışınca kelimeler bile "ay ne hoş" diyor. Hadi bir paragraf çözelim aşkım 📖'},
     {'t': 'Küçük bir hatırlatma 🥰', 'b': 'Gülümsemen 10.000 kelimeden daha değerli ama yine de birkaç tanesini öğrenelim, olur mu? 😘'},
     {'t': 'Bugünün sözü ✨', 'b': '"Success" kelimesinin Türkçesi: senin adın. Hadi bir deneme çözelim güzelim!'},

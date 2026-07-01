@@ -183,28 +183,34 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          text: 'YÖKDİL ',
-                          style: GoogleFonts.outfit(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w700,
-                            color: AppTheme.textPrimary,
-                          ),
-                          children: [
-                            const TextSpan(
-                              text: '♥️',
-                              style: TextStyle(color: AppTheme.accentRose),
-                            ),
-                            TextSpan(
-                              text: 'ükran',
-                              style: GoogleFonts.outfit(
-                                fontSize: 28,
-                                fontWeight: FontWeight.w700,
-                                color: AppTheme.textPrimary,
-                              ),
-                            ),
+                      ShaderMask(
+                        shaderCallback: (bounds) => const LinearGradient(
+                          colors: [
+                            Color(0xFF22D3EE),
+                            Color(0xFF818CF8),
+                            Color(0xFFF472B6),
                           ],
+                        ).createShader(bounds),
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'YÖKDİL ',
+                            style: GoogleFonts.outfit(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            ),
+                            children: [
+                              const TextSpan(text: '♥️ '),
+                              TextSpan(
+                                text: 'Şükran',
+                                style: GoogleFonts.outfit(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(height: 4),

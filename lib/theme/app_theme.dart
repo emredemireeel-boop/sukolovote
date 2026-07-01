@@ -50,19 +50,33 @@ class AppTheme {
     end: Alignment.bottomCenter,
   );
 
-  // Glass effect decoration
+  // Glass effect decoration (premium: subtle depth + inner glow)
   static BoxDecoration glassDecoration({
     double opacity = 0.08,
     double borderRadius = 20,
     Color? borderColor,
   }) {
     return BoxDecoration(
-      color: Colors.white.withOpacity(opacity),
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Colors.white.withOpacity(opacity + 0.04),
+          Colors.white.withOpacity(opacity * 0.5),
+        ],
+      ),
       borderRadius: BorderRadius.circular(borderRadius),
       border: Border.all(
-        color: borderColor ?? Colors.white.withOpacity(0.1),
+        color: borderColor ?? Colors.white.withOpacity(0.12),
         width: 1,
       ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.25),
+          blurRadius: 18,
+          offset: const Offset(0, 10),
+        ),
+      ],
     );
   }
 
