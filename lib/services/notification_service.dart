@@ -14,17 +14,19 @@ class NotificationService {
   // Tatlı / flörtöz / motive edici mesajlar (Şükran'a özel)
   static const List<Map<String, String>> _messages = [
     {'t': 'Günaydın hanımefendi ☀️', 'b': 'Bugün ne kadar güzelsiniz böyle! Bir de YÖKDİL kelimelerine bakınca büsbütün parlayacaksın 💛'},
-    {'t': 'Şükran\'a özel not 💌', 'b': 'Dünyanın en akıllı ve en tatlı doktoru olma yolundasın. Bugün 5 kelime senden korksun! 😌'},
+    {'t': 'Şükran\'a özel not 💌', 'b': 'Dünyanın en tatlı hemşiresi, en akıllı doktora adayı! Bugün 5 kelime senden korksun 😌'},
     {'t': 'Bir çalışma molası? 🍫', 'b': 'Sen çalışınca kelimeler bile "ay ne hoş" diyor. Hadi bir paragraf çözelim aşkım 📖'},
     {'t': 'Küçük bir hatırlatma 🥰', 'b': 'Gülümsemen 10.000 kelimeden daha değerli ama yine de birkaç tanesini öğrenelim, olur mu? 😘'},
     {'t': 'Bugünün sözü ✨', 'b': '"Success" kelimesinin Türkçesi: senin adın. Hadi bir deneme çözelim güzelim!'},
-    {'t': 'Doktor Şükran 🩺', 'b': 'Beyaz önlük sana çok yakışacak. O güne bir kelime daha yaklaşmak için 5 dakika ayır 💪'},
+    {'t': 'Doktora yolundaki hemşirem 🩺', 'b': 'Hem şifa dağıtıyorsun hem akademiye koşuyorsun. YÖKDİL bu azmin yanında çok küçük kalır 💪'},
     {'t': 'Seni düşündüm 💭', 'b': 'Hem bu kadar güzel hem bu kadar çalışkan olmak da ne! YÖKDİL şanslı ki seninle uğraşıyor 😍'},
     {'t': 'Minik mola bitti mi? ⏰', 'b': 'Kelime kartların seni özledi hanımefendi. Bir bakış atsan gözleri parlar 🥺'},
     {'t': 'Motivasyon 🔥', 'b': 'Zor bir paragraf mı? Sen daha zorsun canım. O soruya haddini bildir!'},
     {'t': 'Akşam sözü 🌙', 'b': 'Bugün de harikaydın. Uyumadan bir kelime tekrarı yaparsan rüyanda İngilizce konuşursun 😴💕'},
     {'t': 'Sadece hatırlatmak istedim 💖', 'b': 'Sen bu dünyanın en tatlı çalışkanısın. Bugün hangi konuyu fethediyoruz?'},
     {'t': 'Kraliçeye çağrı 👑', 'b': 'Majesteleri, tebaanız kelimeler emirlerinizi bekliyor. Bir quiz çözelim mi?'},
+    {'t': 'Akademisyen Şükran 🎓', 'b': 'Doktora tezinin en güzel bölümü senin azmin olacak. Bugün YÖKDİL\'e bir adım daha yaklaş 💛'},
+    {'t': 'Nöbet arası mı? 🩷', 'b': 'Hastalarına şifa, kendine bilgi. İki kelime öğren, gülümsemen bin katına çıksın 😊'},
   ];
 
   static Future<void> init() async {

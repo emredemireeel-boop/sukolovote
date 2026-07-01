@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/health_terms_data.dart';
 
+import '../services/health_service.dart';
+
 class HealthTermsScreen extends StatefulWidget {
   const HealthTermsScreen({super.key});
 
@@ -14,9 +16,28 @@ class _HealthTermsScreenState extends State<HealthTermsScreen> {
   String _searchQuery = '';
   String _selectedCategory = 'Tümü';
   final TextEditingController _searchController = TextEditingController();
+  
+  List<HealthTerm> _allTerms = healthTerms;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTerms();
+  }
+
+  Future<void> _loadTerms() async {
+    final terms = await HealthService.fetchHealthTerms();
+    if (mounted) {
+      setState(() {
+        _allTerms = terms;
+        _isLoading = false;
+      });
+    }
+  }
 
   List<HealthTerm> get filteredTerms {
-    return healthTerms.where((term) {
+    return _allTerms.where((term) {
       final matchesSearch = _searchQuery.isEmpty ||
           term.english.toLowerCase().contains(_searchQuery.toLowerCase()) ||
           term.turkish.toLowerCase().contains(_searchQuery.toLowerCase());
