@@ -426,4 +426,366 @@ Nevertheless, stigma continues to hinder access to care. Many individuals delay 
       ),
     ],
   ),
+
+  // ─── MAKALE 5 ───
+  const Article(
+    id: 5,
+    title: 'Alzheimer\'s Disease: Unraveling a Complex Puzzle',
+    turkishTitle: 'Alzheimer Hastalığı: Karmaşık Bir Bulmacayı Çözmek',
+    category: 'Nöroloji',
+    difficulty: 'Zor',
+    source: 'Lancet Neurology',
+    estimatedMinutes: 7,
+    passage: '''Alzheimer\'s disease (AD), the most common form of dementia, currently afflicts an estimated 55 million individuals worldwide, a figure projected to triple by 2050 as populations age. Characterized by progressive cognitive decline, memory loss, and behavioral changes, AD imposes an immense burden on patients, caregivers, and healthcare systems alike.
+
+For decades, the "amyloid cascade hypothesis" has dominated research. According to this framework, the accumulation of beta-amyloid plaques in the brain initiates a cascade of pathological events, including neurofibrillary tangles composed of hyperphosphorylated tau protein, neuronal dysfunction, and eventual cell death. However, the repeated failure of anti-amyloid drugs to produce meaningful clinical benefits has prompted many researchers to reconsider whether amyloid is truly the primary driver of the disease.
+
+Recent breakthroughs have nonetheless kept the hypothesis alive. Monoclonal antibodies such as lecanemab and donanemab have demonstrated modest slowing of cognitive decline in patients with early-stage AD, marking the first disease-modifying therapies to receive regulatory approval. Yet these treatments carry significant risks, including amyloid-related imaging abnormalities that can manifest as brain edema or microhemorrhages.
+
+Parallel research has highlighted the roles of neuroinflammation, vascular dysfunction, and gut microbiota alterations. Lifestyle interventions targeting cardiovascular health, cognitive engagement, and social interaction have shown promise in delaying onset. Ultimately, addressing Alzheimer\'s will likely require a combination of early diagnosis through biomarker screening, personalized pharmacotherapy, and public health strategies that promote brain health from midlife onward.''',
+    turkishSummary: 'Alzheimer, amiloid ve tau birikimiyle ilerleyen bilişsel bozulma hastalığıdır. Yeni monoklonal antikorlar sınırlı yarar sağlarken; damar sağlığı, iltihaplanma ve yaşam tarzı da önemli araştırma alanlarıdır.',
+    vocabulary: [
+      ArticleVocab(english: 'dementia', turkish: 'bunama, demans', partOfSpeech: 'n'),
+      ArticleVocab(english: 'progressive', turkish: 'ilerleyici', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'cascade', turkish: 'zincirleme etki', partOfSpeech: 'n'),
+      ArticleVocab(english: 'accumulation', turkish: 'birikim', partOfSpeech: 'n'),
+      ArticleVocab(english: 'tangle', turkish: 'yumak, karışıklık', partOfSpeech: 'n'),
+      ArticleVocab(english: 'dysfunction', turkish: 'işlev bozukluğu', partOfSpeech: 'n'),
+      ArticleVocab(english: 'prompt', turkish: 'yol açmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'modest', turkish: 'mütevazı, sınırlı', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'edema', turkish: 'ödem', partOfSpeech: 'n'),
+      ArticleVocab(english: 'microhemorrhage', turkish: 'mikro kanama', partOfSpeech: 'n'),
+      ArticleVocab(english: 'vascular', turkish: 'damarsal', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'onset', turkish: 'başlangıç', partOfSpeech: 'n'),
+      ArticleVocab(english: 'biomarker', turkish: 'biyobelirteç', partOfSpeech: 'n'),
+      ArticleVocab(english: 'midlife', turkish: 'orta yaş', partOfSpeech: 'n'),
+      ArticleVocab(english: 'unravel', turkish: 'çözmek', partOfSpeech: 'v'),
+    ],
+    questions: [
+      ArticleQuestion(
+        question: 'According to the passage, what does the amyloid cascade hypothesis propose?',
+        options: [
+          'Alzheimer\'s is caused only by aging.',
+          'Beta-amyloid buildup triggers a chain of pathological events leading to neuronal death.',
+          'Tau tangles have no role in the disease.',
+          'Alzheimer\'s is entirely a vascular disorder.',
+        ],
+        correctIndex: 1,
+        explanation: 'İkinci paragrafta amiloid birikiminin tau, nöronal disfonksiyon ve hücre ölümü zincirini başlattığı belirtilmiş.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'The word "modest" in the third paragraph is closest in meaning to ----.',
+        options: ['exaggerated', 'limited', 'irrelevant', 'permanent'],
+        correctIndex: 1,
+        explanation: '"Modest" burada sınırlı fayda anlamında kullanılmıştır; "limited" ile eşdeğerdir.',
+        questionType: 'Kelime',
+      ),
+      ArticleQuestion(
+        question: 'What can be inferred about anti-amyloid drug development?',
+        options: [
+          'It has been a complete success.',
+          'It has faced repeated failures, leading some to question the amyloid hypothesis.',
+          'It has been abandoned entirely.',
+          'It targets only genetic causes.',
+        ],
+        correctIndex: 1,
+        explanation: '"Repeated failure of anti-amyloid drugs" ifadesi hipotezin sorgulanmasına yol açmış.',
+        questionType: 'Çıkarım',
+      ),
+      ArticleQuestion(
+        question: 'Which of the following is presented as an alternative or additional research avenue?',
+        options: [
+          'gene editing of embryos',
+          'neuroinflammation and gut microbiota',
+          'organ transplantation',
+          'chemotherapy',
+        ],
+        correctIndex: 1,
+        explanation: 'Son paragrafta nöroinflamasyon, damar disfonksiyonu ve bağırsak mikrobiyotası araştırma alanları olarak listelenmiş.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'What is the author\'s overall stance on Alzheimer\'s research?',
+        options: [
+          'It is a lost cause.',
+          'Only lifestyle matters.',
+          'A multifaceted approach combining biomarkers, drugs, and lifestyle is needed.',
+          'The amyloid hypothesis alone is sufficient.',
+        ],
+        correctIndex: 2,
+        explanation: 'Yazar tek yaklaşımın yetmeyeceğini, çok yönlü bir stratejinin gerektiğini vurguluyor.',
+        questionType: 'Ana Fikir',
+      ),
+    ],
+  ),
+
+  // ─── MAKALE 6 ───
+  const Article(
+    id: 6,
+    title: 'The mRNA Vaccine Revolution',
+    turkishTitle: 'mRNA Aşı Devrimi',
+    category: 'İmmünoloji',
+    difficulty: 'Orta',
+    source: 'Science Translational Medicine',
+    estimatedMinutes: 6,
+    passage: '''For decades, messenger RNA (mRNA) technology remained a laboratory curiosity, plagued by instability and unwanted immune reactions. The COVID-19 pandemic, however, catapulted mRNA vaccines from obscurity to global prominence, offering the first commercially successful application of a technology that many scientists had privately doubted would ever reach patients.
+
+Unlike conventional vaccines that introduce weakened pathogens or protein fragments, mRNA vaccines deliver genetic instructions that prompt the body\'s own cells to produce a viral antigen, typically the spike protein of SARS-CoV-2. This antigen then triggers a robust immune response, priming the body to recognize and neutralize the virus upon subsequent exposure. The elegance of the approach lies in its speed: once a target antigen is identified, an mRNA vaccine can be designed in days rather than months.
+
+The key innovations enabling mRNA vaccines were the modification of nucleoside bases to reduce inflammation and the encapsulation of the fragile mRNA in lipid nanoparticles that facilitate cellular uptake. These advances, developed over many years by researchers including Nobel laureates Katalin Karikó and Drew Weissman, laid the groundwork for the rapid deployment of vaccines during the pandemic.
+
+Looking beyond COVID-19, mRNA platforms hold enormous promise for a wide range of infectious diseases, from influenza to HIV, and for personalized cancer vaccines that target patient-specific tumor mutations. Nonetheless, challenges remain, including the need for cold-chain logistics, the durability of induced immunity, and public confidence in a technology that some perceive as new despite its long developmental history.''',
+    turkishSummary: 'mRNA aşıları hücrelere antijen üretme talimatı verir; hızlı geliştirilebilir. COVID-19 sırasında öne çıktı ve şimdi kanser dahil birçok hastalıkta kullanılmak üzere araştırılıyor.',
+    vocabulary: [
+      ArticleVocab(english: 'plagued by', turkish: 'ile boğuşan', partOfSpeech: 'phr'),
+      ArticleVocab(english: 'catapult', turkish: 'fırlatmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'obscurity', turkish: 'bilinmezlik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'prominence', turkish: 'öne çıkma', partOfSpeech: 'n'),
+      ArticleVocab(english: 'weakened', turkish: 'zayıflatılmış', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'antigen', turkish: 'antijen', partOfSpeech: 'n'),
+      ArticleVocab(english: 'robust', turkish: 'güçlü', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'prime (v)', turkish: 'hazırlamak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'subsequent', turkish: 'sonraki', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'encapsulation', turkish: 'kapsülleme', partOfSpeech: 'n'),
+      ArticleVocab(english: 'fragile', turkish: 'kırılgan, hassas', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'facilitate', turkish: 'kolaylaştırmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'deployment', turkish: 'sahaya sürme', partOfSpeech: 'n'),
+      ArticleVocab(english: 'durability', turkish: 'dayanıklılık', partOfSpeech: 'n'),
+      ArticleVocab(english: 'perceive', turkish: 'algılamak', partOfSpeech: 'v'),
+    ],
+    questions: [
+      ArticleQuestion(
+        question: 'What makes mRNA vaccines different from conventional vaccines?',
+        options: [
+          'They use weakened live viruses.',
+          'They introduce protein fragments only.',
+          'They deliver genetic instructions so the body\'s own cells produce the antigen.',
+          'They require surgery to administer.',
+        ],
+        correctIndex: 2,
+        explanation: 'İkinci paragrafta mRNA aşılarının hücreye antijen üretme talimatı verdiği açıkça belirtilmiş.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'The word "catapulted" in paragraph one is closest in meaning to ----.',
+        options: ['delayed', 'suppressed', 'propelled', 'reduced'],
+        correctIndex: 2,
+        explanation: '"Catapult" fırlatmak, hızla öne çıkarmak demektir; "propel" ile eşdeğerdir.',
+        questionType: 'Kelime',
+      ),
+      ArticleQuestion(
+        question: 'Why is speed considered an advantage of mRNA vaccine design?',
+        options: [
+          'Because it uses expensive equipment',
+          'Because a vaccine can be designed in days once the antigen is identified',
+          'Because it does not require testing',
+          'Because it skips clinical trials',
+        ],
+        correctIndex: 1,
+        explanation: 'Antijen belirlendikten sonra günler içinde aşı tasarlanabildiği belirtilmiş.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'What role did nucleoside modification and lipid nanoparticles play?',
+        options: [
+          'They increased side effects.',
+          'They enabled reduced inflammation and effective cellular delivery.',
+          'They made vaccines unusable.',
+          'They eliminated the need for antigens.',
+        ],
+        correctIndex: 1,
+        explanation: 'Üçüncü paragrafta bu iki yenilik iltihabı azaltıp hücre içine girişi kolaylaştıran anahtar teknolojiler olarak sunulmuş.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'Which of the following is NOT mentioned as a future application of mRNA technology?',
+        options: ['influenza', 'HIV', 'personalized cancer vaccines', 'antibiotic replacement'],
+        correctIndex: 3,
+        explanation: 'Metinde antibiyotik yerine kullanılabileceğinden bahsedilmez; diğer üç uygulama sayılmıştır.',
+        questionType: 'Detay',
+      ),
+    ],
+  ),
+
+  // ─── MAKALE 7 ───
+  const Article(
+    id: 7,
+    title: 'The Global Obesity Epidemic',
+    turkishTitle: 'Küresel Obezite Salgını',
+    category: 'Halk Sağlığı',
+    difficulty: 'Orta',
+    source: 'WHO Bulletin',
+    estimatedMinutes: 6,
+    passage: '''Once regarded primarily as a problem of affluent Western nations, obesity has evolved into a truly global epidemic, with rates rising alarmingly in low- and middle-income countries as well. The World Health Organization estimates that more than 1 billion people worldwide are now obese, including 39 million children under the age of five. This shift threatens to overwhelm health systems already grappling with the burden of noncommunicable diseases.
+
+Obesity is a multifactorial condition shaped by biology, environment, and behavior. Genetic variations influence appetite regulation, energy metabolism, and fat distribution, but genes alone cannot account for the dramatic increase observed over recent decades. Rather, obesogenic environments, characterized by the ubiquitous availability of energy-dense processed foods, aggressive marketing, and declining physical activity, have driven population-level weight gain.
+
+The health consequences of obesity extend far beyond aesthetics. Excess adiposity increases the risk of type 2 diabetes, cardiovascular disease, several cancers, obstructive sleep apnea, and musculoskeletal disorders. Perhaps less appreciated is the psychological toll: individuals with obesity frequently face weight-based stigma, contributing to depression, anxiety, and disordered eating.
+
+Interventions must operate at multiple levels. At the individual level, sustained dietary changes and physical activity remain foundational, while newer pharmacological agents such as GLP-1 receptor agonists have produced unprecedented weight loss and improved metabolic outcomes. At the population level, however, policies addressing food environments—taxation of sugar-sweetened beverages, restrictions on junk food marketing to children, and urban planning that promotes active transport—are essential. Treating obesity solely as a matter of personal willpower ignores the powerful structural forces that shape everyday choices.''',
+    turkishSummary: 'Obezite artık gelişmiş ülkelere özgü değil, küresel bir salgın. Genetik, çevresel ve davranışsal nedenlerin ötesinde gıda politikaları da belirleyicidir. GLP-1 agonistleri gibi yeni ilaçlar umut vaadediyor.',
+    vocabulary: [
+      ArticleVocab(english: 'affluent', turkish: 'varlıklı', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'alarmingly', turkish: 'endişe verici biçimde', partOfSpeech: 'adv'),
+      ArticleVocab(english: 'overwhelm', turkish: 'baş edilemez hale getirmek', partOfSpeech: 'v'),
+      ArticleVocab(english: 'grapple with', turkish: 'boğuşmak', partOfSpeech: 'phr'),
+      ArticleVocab(english: 'multifactorial', turkish: 'çok etkenli', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'ubiquitous', turkish: 'her yerde bulunan', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'energy-dense', turkish: 'kalorisi yüksek', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'aesthetics', turkish: 'estetik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'adiposity', turkish: 'yağlanma', partOfSpeech: 'n'),
+      ArticleVocab(english: 'musculoskeletal', turkish: 'kas-iskelet', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'toll', turkish: 'bedel', partOfSpeech: 'n'),
+      ArticleVocab(english: 'sustained', turkish: 'sürekli', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'unprecedented', turkish: 'benzeri görülmemiş', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'willpower', turkish: 'irade gücü', partOfSpeech: 'n'),
+      ArticleVocab(english: 'structural', turkish: 'yapısal', partOfSpeech: 'adj'),
+    ],
+    questions: [
+      ArticleQuestion(
+        question: 'The passage argues that treating obesity as a matter of personal willpower alone is ----.',
+        options: [
+          'the most effective strategy',
+          'inadequate because it ignores structural factors',
+          'supported by all researchers',
+          'the only ethical approach',
+        ],
+        correctIndex: 1,
+        explanation: 'Son cümlede yazar sadece kişisel iradeye odaklanmanın yapısal güçleri göz ardı ettiğini söylüyor.',
+        questionType: 'Ana Fikir',
+      ),
+      ArticleQuestion(
+        question: 'The word "ubiquitous" in paragraph two means ----.',
+        options: ['rare', 'expensive', 'omnipresent', 'nutritious'],
+        correctIndex: 2,
+        explanation: '"Ubiquitous" her yerde bulunan demektir; "omnipresent" ile eşdeğerdir.',
+        questionType: 'Kelime',
+      ),
+      ArticleQuestion(
+        question: 'Which is presented as a population-level policy in the passage?',
+        options: [
+          'genetic testing for children',
+          'taxation of sugar-sweetened beverages',
+          'mandatory gym memberships',
+          'banning all restaurants',
+        ],
+        correctIndex: 1,
+        explanation: 'Yazar şekerli içeceklere vergi ve çocuklara yönelik reklamların kısıtlanmasını politika örneği olarak sayıyor.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'What can be inferred about GLP-1 receptor agonists?',
+        options: [
+          'They cause weight gain.',
+          'They have led to unprecedented weight loss results.',
+          'They replace physical activity entirely.',
+          'They are illegal in most countries.',
+        ],
+        correctIndex: 1,
+        explanation: 'Metinde GLP-1 agonistlerinin "unprecedented weight loss" sağladığı belirtilmiş.',
+        questionType: 'Çıkarım',
+      ),
+      ArticleQuestion(
+        question: 'According to the passage, which of the following is often overlooked about obesity?',
+        options: [
+          'its link to diabetes',
+          'its cardiovascular risks',
+          'its psychological toll and weight-based stigma',
+          'its effect on sleep',
+        ],
+        correctIndex: 2,
+        explanation: 'Metin "less appreciated is the psychological toll" ifadesiyle bu noktayı vurgular.',
+        questionType: 'Detay',
+      ),
+    ],
+  ),
+
+  // ─── MAKALE 8 ───
+  const Article(
+    id: 8,
+    title: 'Telemedicine After the Pandemic',
+    turkishTitle: 'Pandemi Sonrası Uzaktan Sağlık Hizmeti',
+    category: 'Sağlık Sistemleri',
+    difficulty: 'Kolay',
+    source: 'BMJ Health & Technology',
+    estimatedMinutes: 5,
+    passage: '''The COVID-19 pandemic accelerated the adoption of telemedicine at a pace no policymaker could have anticipated. Within weeks, video consultations replaced in-person visits for millions of patients, and regulations that once hindered virtual care were relaxed almost overnight. Now that acute crisis has subsided, health systems around the world are reassessing the role that telemedicine should play in routine practice.
+
+Proponents argue that telemedicine expands access, particularly for patients in rural areas or those with mobility limitations. Follow-up visits for chronic conditions such as hypertension and diabetes lend themselves well to virtual formats, and behavioral health services delivered online have shown outcomes comparable to face-to-face therapy. Additionally, telemedicine can reduce the burden of travel, time off work, and childcare arrangements, thereby increasing adherence to care.
+
+Nevertheless, virtual care is not universally suitable. Physical examinations remain essential in many clinical scenarios, and technology gaps can exclude older adults or lower-income households, potentially widening rather than narrowing health disparities. Concerns have also been raised about diagnostic accuracy in situations where subtle physical signs may be missed on a video screen.
+
+Going forward, a hybrid model that thoughtfully combines in-person and virtual care appears most promising. Success will depend on reimbursement policies that recognize the value of telemedicine, investments in digital infrastructure, training for clinicians in remote assessment techniques, and safeguards for privacy and data security. Handled well, telemedicine could enhance both efficiency and equity; handled poorly, it could deepen existing inequalities.''',
+    turkishSummary: 'Pandemi ile hızla yaygınlaşan telemedicine kronik hasta takibi ve ruh sağlığında etkili olabilir, ancak muayene gerektiren durumlarda ve dijital erişimin sınırlı olduğu gruplarda eşitsizlik yaratabilir.',
+    vocabulary: [
+      ArticleVocab(english: 'accelerate', turkish: 'hızlandırmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'anticipate', turkish: 'öngörmek', partOfSpeech: 'v'),
+      ArticleVocab(english: 'consultation', turkish: 'muayene, danışma', partOfSpeech: 'n'),
+      ArticleVocab(english: 'relax (regulations)', turkish: 'gevşetmek (kuralları)', partOfSpeech: 'v'),
+      ArticleVocab(english: 'subside', turkish: 'yatışmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'proponent', turkish: 'destekçi', partOfSpeech: 'n'),
+      ArticleVocab(english: 'lend itself to', turkish: 'uygun olmak', partOfSpeech: 'phr'),
+      ArticleVocab(english: 'adherence', turkish: 'uyum', partOfSpeech: 'n'),
+      ArticleVocab(english: 'suitable', turkish: 'uygun', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'exclude', turkish: 'dışlamak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'disparity', turkish: 'eşitsizlik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'subtle', turkish: 'ince, sezilmesi güç', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'reimbursement', turkish: 'geri ödeme', partOfSpeech: 'n'),
+      ArticleVocab(english: 'safeguard (n)', turkish: 'koruma önlemi', partOfSpeech: 'n'),
+      ArticleVocab(english: 'equity', turkish: 'hakkaniyet', partOfSpeech: 'n'),
+    ],
+    questions: [
+      ArticleQuestion(
+        question: 'What is the author\'s overall attitude toward telemedicine?',
+        options: ['fully enthusiastic', 'entirely negative', 'balanced, recognizing benefits and drawbacks', 'indifferent'],
+        correctIndex: 2,
+        explanation: 'Yazar hem faydaları hem de riskleri dengeli biçimde sunuyor.',
+        questionType: 'Yazarın Tutumu',
+      ),
+      ArticleQuestion(
+        question: 'According to the passage, which patients benefit most clearly from telemedicine?',
+        options: [
+          'patients needing surgery',
+          'those requiring physical exams for new symptoms',
+          'patients with chronic conditions needing follow-up and those in rural areas',
+          'children with acute injuries',
+        ],
+        correctIndex: 2,
+        explanation: 'Kronik hastalık takibi ve kırsalda yaşayanlar açıkça öne çıkarılıyor.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'The word "subside" in paragraph one is closest in meaning to ----.',
+        options: ['intensify', 'diminish', 'appear', 'complicate'],
+        correctIndex: 1,
+        explanation: '"Subside" azalmak, yatışmak demektir; "diminish" ile eş anlamlıdır.',
+        questionType: 'Kelime',
+      ),
+      ArticleQuestion(
+        question: 'What potential downside of telemedicine is highlighted?',
+        options: [
+          'it eliminates the need for doctors',
+          'it may deepen existing inequalities if not implemented carefully',
+          'it costs the same as in-person care',
+          'it always misses serious diagnoses',
+        ],
+        correctIndex: 1,
+        explanation: 'Yazar yanlış uygulanırsa eşitsizlikleri artırabileceğini açıkça söylüyor.',
+        questionType: 'Detay',
+      ),
+      ArticleQuestion(
+        question: 'What model does the passage recommend going forward?',
+        options: [
+          'a purely virtual model',
+          'abandoning telemedicine',
+          'a hybrid model combining in-person and virtual care',
+          'in-person care only',
+        ],
+        correctIndex: 2,
+        explanation: 'Son paragrafta hibrit modelin en umut verici yaklaşım olduğu vurgulanıyor.',
+        questionType: 'Ana Fikir',
+      ),
+    ],
+  ),
 ];
