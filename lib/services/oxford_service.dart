@@ -53,11 +53,12 @@ class OxfordService {
         final turk = (item['t']?.toString() ?? '').trim();
         final level = (item['l']?.toString() ?? 'B1').trim();
         if (eng.isEmpty || turk.isEmpty) continue;
+        final example = (item['x']?.toString() ?? '').trim();
         words.add(VocabWord(
           english: eng,
           turkish: turk,
           category: _categoryForLevel(level),
-          example: _generateMedicalExample(eng),
+          example: example.isNotEmpty ? example : _generateMedicalExample(eng),
           synonyms: const [],
           collocations: const [],
         ));
