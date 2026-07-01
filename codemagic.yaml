@@ -21,25 +21,35 @@ workflows:
     name: Şüko YÖKDİL iOS TestFlight Build
     instance_type: mac_mini_m2
     max_build_duration: 120
-    integrations:
-      app_store_connect: Suko YOKDIL API Key
     environment:
+      groups:
+        - appstore_credentials
+      vars:
+        BUNDLE_ID: "com.sukolovote.yokdilSaglik"
       flutter: default
       xcode: latest
       cocoapods: default
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.sukolovote.yokdilSaglik
     scripts:
-      - name: Get Flutter packages
+      - name: Set up keychain
         script: |
-          flutter packages pub get
-      - name: Install CocoaPods
+          keychain initialize
+      - name: Fetch/create signing files
         script: |
-          cd ios && pod install
-      - name: Set up code signing
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+      - name: Add certificates to keychain
+        script: |
+          keychain add-certificates
+      - name: Apply provisioning profiles to Xcode project
         script: |
           xcode-project use-profiles
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Install CocoaPods
+        script: |
+          find . -name "Podfile" -execdir pod install \;
       - name: Build iOS IPA
         script: |
           flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
@@ -47,5 +57,7 @@ workflows:
       - build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
-        auth: integration
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
