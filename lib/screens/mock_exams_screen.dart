@@ -538,13 +538,49 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                                   color:
                                       Colors.white.withValues(alpha: 0.08)),
                             ),
-                            child: Text(
-                              q.passageRef!,
-                              style: GoogleFonts.inter(
-                                fontSize: 13.5,
-                                height: 1.7,
-                                color: AppTheme.textSecondary,
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  q.passageRef!,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 13.5,
+                                    height: 1.7,
+                                    color: AppTheme.textSecondary,
+                                  ),
+                                ),
+                                if (q.passageRefTr != null) ...[
+                                  const SizedBox(height: 10),
+                                  const Divider(
+                                      color: Colors.white24, height: 1),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.translate_rounded,
+                                          size: 14,
+                                          color: AppTheme.accentAmber),
+                                      const SizedBox(width: 6),
+                                      Text(
+                                        'Türkçe çeviri',
+                                        style: GoogleFonts.inter(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w600,
+                                          color: AppTheme.accentAmber,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    q.passageRefTr!,
+                                    style: GoogleFonts.inter(
+                                      fontSize: 13,
+                                      height: 1.7,
+                                      color: AppTheme.textMuted,
+                                    ),
+                                  ),
+                                ],
+                              ],
                             ),
                           ),
                         ],
@@ -1115,6 +1151,42 @@ class _ReviewTile extends StatelessWidget {
             style: GoogleFonts.inter(fontSize: 12, color: statusColor),
           ),
           children: [
+            if (question.passageRef != null) ...[
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(12),
+                margin: const EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.04),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      question.passageRef!,
+                      style: GoogleFonts.inter(
+                        fontSize: 12.5,
+                        height: 1.6,
+                        color: AppTheme.textSecondary,
+                      ),
+                    ),
+                    if (question.passageRefTr != null) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        question.passageRefTr!,
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          height: 1.6,
+                          fontStyle: FontStyle.italic,
+                          color: AppTheme.textMuted,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -1136,41 +1208,92 @@ class _ReviewTile extends StatelessWidget {
               } else if (isUserOpt) {
                 c = const Color(0xFFF43F5E);
               }
+              final tr = question.optionsTr != null &&
+                      i < question.optionsTr!.length
+                  ? question.optionsTr![i]
+                  : null;
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 3),
-                child: Row(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '${String.fromCharCode(65 + i)}. ',
-                      style: GoogleFonts.inter(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w700,
-                          color: c),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${String.fromCharCode(65 + i)}. ',
+                          style: GoogleFonts.inter(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              color: c),
+                        ),
+                        Expanded(
+                          child: Text(
+                            question.options[i],
+                            style: GoogleFonts.inter(
+                              fontSize: 13,
+                              color: c,
+                              fontWeight: (isCorrectOpt || isUserOpt)
+                                  ? FontWeight.w600
+                                  : FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        if (isCorrectOpt)
+                          const Icon(Icons.check_circle_rounded,
+                              size: 16, color: AppTheme.accentEmerald),
+                        if (isUserOpt && !isCorrectOpt)
+                          const Icon(Icons.cancel_rounded,
+                              size: 16, color: Color(0xFFF43F5E)),
+                      ],
                     ),
-                    Expanded(
-                      child: Text(
-                        question.options[i],
-                        style: GoogleFonts.inter(
-                          fontSize: 13,
-                          color: c,
-                          fontWeight: (isCorrectOpt || isUserOpt)
-                              ? FontWeight.w600
-                              : FontWeight.w400,
+                    if (tr != null)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 18, top: 2),
+                        child: Text(
+                          tr,
+                          style: GoogleFonts.inter(
+                            fontSize: 11.5,
+                            fontStyle: FontStyle.italic,
+                            color: AppTheme.textMuted,
+                          ),
                         ),
                       ),
-                    ),
-                    if (isCorrectOpt)
-                      const Icon(Icons.check_circle_rounded,
-                          size: 16, color: AppTheme.accentEmerald),
-                    if (isUserOpt && !isCorrectOpt)
-                      const Icon(Icons.cancel_rounded,
-                          size: 16, color: Color(0xFFF43F5E)),
                   ],
                 ),
               );
             }),
             const SizedBox(height: 10),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: AppTheme.accentEmerald.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    color: AppTheme.accentEmerald.withValues(alpha: 0.3)),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.check_circle_rounded,
+                      size: 16, color: AppTheme.accentEmerald),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Doğru cevap: ${question.correctLetter}. ${question.correctText}',
+                      style: GoogleFonts.inter(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w600,
+                        height: 1.4,
+                        color: AppTheme.accentEmerald,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
