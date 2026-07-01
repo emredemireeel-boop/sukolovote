@@ -14,6 +14,7 @@ import 'connectors_screen.dart';
 import 'vocab_pool_screen.dart';
 import 'articles_screen.dart';
 import 'mock_exams_screen.dart';
+import 'custom_words_screen.dart';
 import 'reading_passages_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -954,6 +955,68 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                 ),
                 const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF818CF8)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (_) => const CustomWordsScreen()));
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFFEC4899).withOpacity(0.12),
+                  const Color(0xFFF472B6).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFFEC4899).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFEC4899).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('✍️', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Kelime Listem',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Kendi kelimelerini ekle • Kart + Quiz',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFFF472B6),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFFF472B6)),
               ],
             ),
           ),

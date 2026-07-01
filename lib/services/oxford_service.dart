@@ -45,7 +45,11 @@ class OxfordService {
   static Future<List<VocabWord>> fetchOxford3000() async {
     if (_cache != null) return _cache!;
     try {
-      final raw = await rootBundle.loadString(_assetPath);
+      var raw = await rootBundle.loadString(_assetPath);
+      // BOM karakterini temizle (UTF-8 BOM: \uFEFF)
+      if (raw.startsWith('\uFEFF')) {
+        raw = raw.substring(1);
+      }
       final List<dynamic> data = json.decode(raw) as List<dynamic>;
       final words = <VocabWord>[];
       for (final item in data) {
