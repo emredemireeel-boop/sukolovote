@@ -1,10 +1,15 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart' show rootBundle;
 import '../data/vocab_pool_data.dart';
 
+/// Oxford 3000 kelimeleri artık uygulamaya gömülü (offline) olarak gelir.
+/// Kaynak: assets/oxford3000.json  →  [{ "e": english, "l": CEFR, "t": turkish }]
 class OxfordService {
-  static const String _dbUrl = 'https://raw.githubusercontent.com/ibrahimaykutbas/the-oxford-dictionary/master/db.json';
+  static const String _assetPath = 'assets/oxford3000.json';
+
+  // Bir kez yükleyip önbelleğe al
+  static List<VocabWord>? _cache;
 
   static String _generateMedicalExample(String word) {
     final templates = [
@@ -21,40 +26,46 @@ class OxfordService {
     return templates[Random().nextInt(templates.length)];
   }
 
-  static Future<List<VocabWord>> fetchOxford3000() async {
-    try {
-      final response = await http.get(Uri.parse(_dbUrl));
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> data = json.decode(response.body);
-        List<VocabWord> words = [];
-        
-        data.forEach((letter, list) {
-          if (list is List) {
-            for (var item in list) {
-              final eng = item['english']?.toString().trim() ?? '';
-              final turk = item['turkish']?.toString().trim() ?? '';
-              
-              if (eng.isNotEmpty && turk.isNotEmpty) {
-                // Randomly assign to B1 or B2 to match YÖKDİL categories
-                final category = Random().nextDouble() > 0.4 ? 'Oxford B1 Seviyesi' : 'Oxford B2 Seviyesi';
-                
-                words.add(VocabWord(
-                  english: eng,
-                  turkish: turk,
-                  category: category,
-                  example: _generateMedicalExample(eng),
-                  synonyms: [],
-                  collocations: [],
-                ));
-              }
-            }
-          }
-        });
-        return words;
-      }
-    } catch (e) {
-      print('Failed to load Oxford 3000: $e');
+  static String _categoryForLevel(String level) {
+    switch (level.toUpperCase()) {
+      case 'A1':
+        return 'Oxford A1 Seviyesi';
+      case 'A2':
+        return 'Oxford A2 Seviyesi';
+      case 'B1':
+        return 'Oxford B1 Seviyesi';
+      case 'B2':
+        return 'Oxford B2 Seviyesi';
+      default:
+        return 'Oxford B1 Seviyesi';
     }
-    return [];
+  }
+
+  /// Tüm Oxford 3000 kelimelerini yerel asset'ten yükler.
+  static Future<List<VocabWord>> fetchOxford3000() async {
+    if (_cache != null) return _cache!;
+    try {
+      final raw = await rootBundle.loadString(_assetPath);
+      final List<dynamic> data = json.decode(raw) as List<dynamic>;
+      final words = <VocabWord>[];
+      for (final item in data) {
+        final eng = (item['e']?.toString() ?? '').trim();
+        final turk = (item['t']?.toString() ?? '').trim();
+        final level = (item['l']?.toString() ?? 'B1').trim();
+        if (eng.isEmpty || turk.isEmpty) continue;
+        words.add(VocabWord(
+          english: eng,
+          turkish: turk,
+          category: _categoryForLevel(level),
+          example: _generateMedicalExample(eng),
+          synonyms: const [],
+          collocations: const [],
+        ));
+      }
+      _cache = words;
+      return words;
+    } catch (e) {
+      return const [];
+    }
   }
 }

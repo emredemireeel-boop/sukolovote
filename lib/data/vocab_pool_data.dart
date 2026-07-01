@@ -52,6 +52,8 @@ final List<VocabCategory> vocabCategories = [
   const VocabCategory(name: 'Tıbbi Fiiller', icon: '💉', color: '#10B981', description: 'Tıp alanında kullanılan fiiller'),
   const VocabCategory(name: 'Araştırma Terimleri', icon: '🔬', color: '#8B5CF6', description: 'Bilimsel araştırma terminolojisi'),
   const VocabCategory(name: 'Edatlar & Kalıplar', icon: '📍', color: '#EC4899', description: 'Sabit edat kalıpları'),
+  const VocabCategory(name: 'Oxford A1 Seviyesi', icon: '🟢', color: '#22C55E', description: 'Oxford 3000 - A1 Temel Kelimeler'),
+  const VocabCategory(name: 'Oxford A2 Seviyesi', icon: '🟡', color: '#EAB308', description: 'Oxford 3000 - A2 Kelimeler'),
   const VocabCategory(name: 'Oxford B1 Seviyesi', icon: '📘', color: '#3B82F6', description: 'Oxford 3000 - B1 Akademik Kelimeler'),
   const VocabCategory(name: 'Oxford B2 Seviyesi', icon: '📙', color: '#F97316', description: 'Oxford 3000 - B2 İleri Seviye Kelimeler'),
 ];
