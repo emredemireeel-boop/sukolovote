@@ -1,5 +1,6 @@
 /// YÖKDİL Sağlık - Makale Modülü
 /// Sınavda çıkabilecek formatta akademik sağlık makaleleri, kelimeler ve sorular
+import 'articles_extra.dart';
 
 class Article {
   final int id;
@@ -788,4 +789,167 @@ Going forward, a hybrid model that thoughtfully combines in-person and virtual c
       ),
     ],
   ),
+
+  // ─── MAKALE 9 ───
+  const Article(
+    id: 9,
+    title: 'Stem Cell Therapy: Promise and Challenges',
+    turkishTitle: 'Kök Hücre Tedavisi: Umut ve Zorluklar',
+    category: 'Rejeneratif Tıp',
+    difficulty: 'Zor',
+    source: 'Cell Stem Cell',
+    estimatedMinutes: 7,
+    passage: '''Stem cell therapy represents one of the most exciting frontiers in modern medicine, offering the potential to repair or replace damaged tissues and organs. Stem cells are unique in their ability to self-renew and differentiate into specialised cell types, making them invaluable for regenerative medicine.
+
+There are several types of stem cells used in research and clinical applications. Embryonic stem cells, derived from early-stage embryos, possess the greatest differentiation potential but raise significant ethical concerns. Adult stem cells, found in bone marrow and other tissues, are less controversial but have more limited plasticity. Induced pluripotent stem cells (iPSCs), created by reprogramming adult cells, combine ethical acceptability with broad differentiation capacity.
+
+Clinical applications of stem cell therapy have expanded rapidly. Haematopoietic stem cell transplantation has long been used to treat blood cancers and immune disorders. More recently, mesenchymal stem cells have shown promise in treating conditions ranging from osteoarthritis to spinal cord injuries. However, the field faces challenges including tumour formation risk, immune rejection, and the difficulty of controlling differentiation in vivo.
+
+Despite these obstacles, ongoing research continues to refine techniques for safer and more effective therapies. The development of personalised stem cell treatments derived from a patient\'s own cells may ultimately overcome rejection issues, bringing regenerative medicine closer to routine clinical practice.''',
+    turkishSummary: 'Kök hücre tedavisi hasarlı dokuları onarma potansiyeli sunar. Embriyonik, erişkin ve iPSC türleri farklı avantajlar taşır. Tümör riski ve bağışıklık reddi gibi zorluklar devam etmektedir.',
+    vocabulary: [
+      ArticleVocab(english: 'frontier', turkish: 'sınır, öncü alan', partOfSpeech: 'n'),
+      ArticleVocab(english: 'self-renew', turkish: 'kendini yenilemek', partOfSpeech: 'v'),
+      ArticleVocab(english: 'differentiate', turkish: 'farklılaşmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'invaluable', turkish: 'paha biçilmez', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'derive', turkish: 'elde etmek', partOfSpeech: 'v'),
+      ArticleVocab(english: 'plasticity', turkish: 'esneklik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'reprogramming', turkish: 'yeniden programlama', partOfSpeech: 'n'),
+      ArticleVocab(english: 'haematopoietic', turkish: 'kan yapıcı', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'mesenchymal', turkish: 'mezenkimal', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'osteoarthritis', turkish: 'kireçlenme', partOfSpeech: 'n'),
+      ArticleVocab(english: 'tumour formation', turkish: 'tümör oluşumu', partOfSpeech: 'n'),
+      ArticleVocab(english: 'in vivo', turkish: 'canlı ortamda', partOfSpeech: 'adv'),
+      ArticleVocab(english: 'refine', turkish: 'geliştirmek', partOfSpeech: 'v'),
+    ],
+    questions: [
+      ArticleQuestion(question: 'What makes stem cells unique according to the passage?', options: ['They can only form blood cells.', 'They can self-renew and differentiate into specialised cells.', 'They are found only in embryos.', 'They cannot be used in therapy.'], correctIndex: 1, explanation: 'Metin kök hücrelerin kendini yenileyebildiğini ve özelleşmiş hücrelere dönüşebildiğini belirtir.', questionType: 'Detay'),
+      ArticleQuestion(question: 'Why are embryonic stem cells ethically controversial?', options: ['Because they are ineffective', 'Because they are derived from early-stage embryos', 'Because they cause cancer', 'Because they are too expensive'], correctIndex: 1, explanation: 'Metinde erken evre embriyolardan elde edildikleri için etik kaygı doğurduğu belirtilir.', questionType: 'Detay'),
+      ArticleQuestion(question: 'The word "invaluable" is closest in meaning to ----.',  options: ['worthless', 'extremely valuable', 'cheap', 'temporary'], correctIndex: 1, explanation: '"Invaluable" = paha biçilmez, son derece değerli.', questionType: 'Kelime'),
+      ArticleQuestion(question: 'What can be inferred about iPSCs?', options: ['They are less useful than adult stem cells.', 'They combine ethical benefits with broad differentiation.', 'They can only become blood cells.', 'They are banned worldwide.'], correctIndex: 1, explanation: 'iPSC\'ler etik kabul edilebilirliği geniş farklılaşma kapasitesiyle birleştirir.', questionType: 'Çıkarım'),
+      ArticleQuestion(question: 'What is the main idea of the passage?', options: ['Stem cells are dangerous and should be banned.', 'Stem cell therapy offers great promise but faces significant challenges.', 'Only embryonic stem cells are useful.', 'Stem cell research has been abandoned.'], correctIndex: 1, explanation: 'Metin hem umut hem zorlukları dengeli biçimde sunar.', questionType: 'Ana Fikir'),
+    ],
+  ),
+
+  // ─── MAKALE 10 ───
+  const Article(
+    id: 10,
+    title: 'Cardiovascular Disease Prevention',
+    turkishTitle: 'Kalp Damar Hastalıkları Önleme',
+    category: 'Kardiyoloji',
+    difficulty: 'Orta',
+    source: 'European Heart Journal',
+    estimatedMinutes: 6,
+    passage: '''Cardiovascular disease (CVD) remains the leading cause of death globally, accounting for approximately 17.9 million lives lost each year. However, a substantial proportion of CVD is preventable through modification of lifestyle risk factors and appropriate medical management.
+
+The primary modifiable risk factors include hypertension, dyslipidaemia, smoking, physical inactivity, unhealthy diet, obesity, and diabetes. Of these, hypertension is the single greatest contributor to CVD mortality. Controlling blood pressure through dietary changes, regular exercise, and medication when necessary can dramatically reduce the risk of stroke and heart attack.
+
+Smoking cessation provides perhaps the most immediate benefit; within a year of quitting, the excess cardiovascular risk drops by approximately 50 percent. Regular physical activity of at least 150 minutes per week at moderate intensity reduces CVD risk by 20-30 percent. The Mediterranean diet, rich in fruits, vegetables, whole grains, fish, and olive oil, has consistently demonstrated cardioprotective effects.
+
+Secondary prevention in patients with established CVD involves antiplatelet therapy, statins, and management of comorbidities. Cardiac rehabilitation programmes combining exercise, education, and psychological support have been shown to reduce mortality by up to 25 percent in post-myocardial infarction patients.''',
+    turkishSummary: 'Kalp damar hastalıkları dünyada en çok ölüme neden olur ama büyük ölçüde önlenebilir. Hipertansiyon kontrolü, sigara bırakma, egzersiz ve Akdeniz diyeti temel önleyici yaklaşımlardır.',
+    vocabulary: [
+      ArticleVocab(english: 'modifiable', turkish: 'değiştirilebilir', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'dyslipidaemia', turkish: 'kan yağı bozukluğu', partOfSpeech: 'n'),
+      ArticleVocab(english: 'cessation', turkish: 'bırakma, durma', partOfSpeech: 'n'),
+      ArticleVocab(english: 'cardioprotective', turkish: 'kalp koruyucu', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'antiplatelet', turkish: 'kan sulandırıcı', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'statin', turkish: 'kolesterol ilacı', partOfSpeech: 'n'),
+      ArticleVocab(english: 'comorbidity', turkish: 'eşlik eden hastalık', partOfSpeech: 'n'),
+      ArticleVocab(english: 'rehabilitation', turkish: 'rehabilitasyon', partOfSpeech: 'n'),
+      ArticleVocab(english: 'myocardial infarction', turkish: 'kalp krizi', partOfSpeech: 'n'),
+      ArticleVocab(english: 'proportion', turkish: 'oran', partOfSpeech: 'n'),
+      ArticleVocab(english: 'dramatically', turkish: 'çarpıcı biçimde', partOfSpeech: 'adv'),
+      ArticleVocab(english: 'established', turkish: 'mevcut, yerleşmiş', partOfSpeech: 'adj'),
+    ],
+    questions: [
+      ArticleQuestion(question: 'According to the passage, what is the leading cause of death globally?', options: ['Cancer', 'Cardiovascular disease', 'Diabetes', 'Infectious diseases'], correctIndex: 1, explanation: 'Metinde KVH\'nin dünya genelinde en çok ölüme neden olduğu belirtilir.', questionType: 'Detay'),
+      ArticleQuestion(question: 'The word "cessation" is closest in meaning to ----.',  options: ['beginning', 'stopping', 'increasing', 'enjoying'], correctIndex: 1, explanation: '"Cessation" = bırakma, durma; "stopping" ile eşdeğerdir.', questionType: 'Kelime'),
+      ArticleQuestion(question: 'How much does smoking cessation reduce excess cardiovascular risk within a year?', options: ['10%', '25%', '50%', '100%'], correctIndex: 2, explanation: 'Metinde bir yıl içinde fazla riskin yaklaşık %50 düştüğü belirtilir.', questionType: 'Detay'),
+      ArticleQuestion(question: 'What can be inferred about the Mediterranean diet?', options: ['It increases CVD risk.', 'It has proven heart-protective effects.', 'It is only useful for diabetics.', 'It replaces all medication.'], correctIndex: 1, explanation: '"consistently demonstrated cardioprotective effects" ifadesi kanıtlanmış kalp koruyucu etkileri ima eder.', questionType: 'Çıkarım'),
+      ArticleQuestion(question: 'The author\'s primary purpose is to ----.',  options: ['promote a specific drug', 'explain how CVD can be prevented', 'criticise modern medicine', 'describe a single case study'], correctIndex: 1, explanation: 'Metnin amacı KVH\'nin nasıl önlenebileceğini kapsamlı biçimde açıklamaktır.', questionType: 'Yazarın Tutumu'),
+    ],
+  ),
+
+  // ─── MAKALE 11 ───
+  const Article(
+    id: 11,
+    title: 'Genetics and Personalized Medicine',
+    turkishTitle: 'Genetik ve Kişiselleştirilmiş Tıp',
+    category: 'Genetik',
+    difficulty: 'Zor',
+    source: 'Nature Genetics',
+    estimatedMinutes: 7,
+    passage: '''The completion of the Human Genome Project in 2003 ushered in an era of unprecedented opportunity for personalized medicine. By understanding the genetic variations that influence drug metabolism, disease susceptibility, and treatment response, clinicians can tailor therapies to individual patients rather than relying on one-size-fits-all approaches.
+
+Pharmacogenomics, the study of how genes affect a person\'s response to drugs, is perhaps the most immediately practical application. Genetic testing can now identify patients who metabolise certain medications too rapidly or too slowly, enabling dose adjustments that improve efficacy and reduce adverse reactions. For example, variations in the CYP2C19 gene influence the activation of clopidogrel, a widely prescribed antiplatelet agent.
+
+Beyond pharmacology, genome-wide association studies have identified thousands of genetic variants linked to complex diseases such as breast cancer, coronary artery disease, and schizophrenia. Polygenic risk scores, which aggregate the effects of many variants, are being developed to stratify patients by disease risk, potentially enabling earlier and more targeted interventions.
+
+However, translating genomic discoveries into clinical practice presents challenges. Issues of data privacy, equitable access across socioeconomic groups, and the limited predictive power of genetics for many multifactorial diseases remain significant barriers. Nevertheless, the trajectory toward genomically informed healthcare appears irreversible.''',
+    turkishSummary: 'İnsan Genom Projesi kişiselleştirilmiş tıbbın önünü açtı. Farmakogenomik ilaç dozlarını kişiye göre ayarlamaya olanak tanır. Poligenik risk skorları hastalık riskini katmanlaştırabilir ama gizlilik ve erişim sorunları devam eder.',
+    vocabulary: [
+      ArticleVocab(english: 'usher in', turkish: 'başlatmak', partOfSpeech: 'phr'),
+      ArticleVocab(english: 'susceptibility', turkish: 'yatkınlık', partOfSpeech: 'n'),
+      ArticleVocab(english: 'tailor', turkish: 'uyarlamak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'pharmacogenomics', turkish: 'farmakogenomik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'metabolise', turkish: 'metabolize etmek', partOfSpeech: 'v'),
+      ArticleVocab(english: 'efficacy', turkish: 'etkinlik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'aggregate', turkish: 'toplamak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'stratify', turkish: 'katmanlaştırmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'equitable', turkish: 'adil', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'multifactorial', turkish: 'çok etkenli', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'trajectory', turkish: 'gidişat', partOfSpeech: 'n'),
+      ArticleVocab(english: 'irreversible', turkish: 'geri dönüşü olmayan', partOfSpeech: 'adj'),
+    ],
+    questions: [
+      ArticleQuestion(question: 'What did the Human Genome Project enable?', options: ['It cured all genetic diseases.', 'It opened the era of personalized medicine.', 'It eliminated the need for drugs.', 'It replaced all surgeries.'], correctIndex: 1, explanation: 'Metin genom projesinin kişiselleştirilmiş tıp çağını başlattığını belirtir.', questionType: 'Detay'),
+      ArticleQuestion(question: 'The word "tailor" in paragraph one is closest in meaning to ----.',  options: ['standardize', 'customize', 'remove', 'ignore'], correctIndex: 1, explanation: '"Tailor" burada kişiye özel uyarlamak anlamındadır.', questionType: 'Kelime'),
+      ArticleQuestion(question: 'What is pharmacogenomics primarily concerned with?', options: ['How genes affect drug response', 'How to edit genes directly', 'How to clone organisms', 'How to prevent mutations'], correctIndex: 0, explanation: 'Farmakogenomik genlerin ilaç yanıtını nasıl etkilediğini inceler.', questionType: 'Detay'),
+      ArticleQuestion(question: 'What barrier to personalized medicine is NOT mentioned?', options: ['Data privacy', 'Equitable access', 'Religious objections', 'Limited predictive power'], correctIndex: 2, explanation: 'Dini itirazlar metinde engel olarak belirtilmemiştir.', questionType: 'Çıkarım'),
+      ArticleQuestion(question: 'The author\'s view toward genomically informed healthcare is ----.',  options: ['entirely pessimistic', 'cautiously optimistic', 'neutral and indifferent', 'sarcastically critical'], correctIndex: 1, explanation: 'Yazar zorlukları kabul ederken gidişatın geri dönüşü olmayan olduğunu belirtir; temkinli iyimserdir.', questionType: 'Yazarın Tutumu'),
+    ],
+  ),
+
+  // ─── MAKALE 12 ───
+  const Article(
+    id: 12,
+    title: 'The Gut Microbiome and Human Health',
+    turkishTitle: 'Bağırsak Mikrobiyomu ve İnsan Sağlığı',
+    category: 'Gastroenteroloji',
+    difficulty: 'Orta',
+    source: 'Nature Reviews Gastroenterology',
+    estimatedMinutes: 6,
+    passage: '''The human gut harbours trillions of microorganisms collectively known as the gut microbiome. Far from being passive passengers, these bacteria, fungi, and viruses play active roles in digestion, immune regulation, and even mental health through the gut-brain axis.
+
+A diverse and balanced microbiome is associated with good health, whereas dysbiosis—an imbalance in microbial communities—has been linked to conditions ranging from inflammatory bowel disease and obesity to depression and autoimmune disorders. Diet is the single most influential factor shaping gut microbial composition; fibre-rich diets promote beneficial bacteria, while diets high in processed food and sugar encourage pathogenic species.
+
+Emerging therapeutic strategies aim to restore microbial balance. Probiotics (live beneficial bacteria) and prebiotics (substances that feed them) are widely available, though evidence for their efficacy varies. Faecal microbiota transplantation (FMT) has proven remarkably effective for recurrent Clostridioides difficile infections and is being investigated for other conditions.
+
+Research into the microbiome is still in its early stages, and many questions remain unanswered, including how best to define a "healthy" microbiome and how individual variation affects treatment outcomes. Nonetheless, the growing understanding of host-microbe interactions holds enormous promise for the future of preventive and therapeutic medicine.''',
+    turkishSummary: 'Bağırsak mikrobiyomu sindirim, bağışıklık ve ruh sağlığını etkiler. Disbiyoz birçok hastalıkla ilişkilendirilir. Diyet en belirleyici faktördür. Probiyotikler ve dışkı nakli umut verici tedavi yaklaşımlarıdır.',
+    vocabulary: [
+      ArticleVocab(english: 'harbour', turkish: 'barındırmak', partOfSpeech: 'v'),
+      ArticleVocab(english: 'dysbiosis', turkish: 'disbiyoz', partOfSpeech: 'n'),
+      ArticleVocab(english: 'gut-brain axis', turkish: 'bağırsak-beyin ekseni', partOfSpeech: 'n'),
+      ArticleVocab(english: 'fibre-rich', turkish: 'lifli', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'pathogenic', turkish: 'hastalık yapıcı', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'probiotic', turkish: 'probiyotik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'prebiotic', turkish: 'prebiyotik', partOfSpeech: 'n'),
+      ArticleVocab(english: 'faecal', turkish: 'dışkıyla ilgili', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'recurrent', turkish: 'tekrarlayan', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'host-microbe', turkish: 'konak-mikrop', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'preventive', turkish: 'önleyici', partOfSpeech: 'adj'),
+      ArticleVocab(english: 'composition', turkish: 'bileşim', partOfSpeech: 'n'),
+    ],
+    questions: [
+      ArticleQuestion(question: 'What role does the gut microbiome play according to the passage?', options: ['It only aids digestion.', 'It is involved in digestion, immunity, and mental health.', 'It has no known function.', 'It causes only diseases.'], correctIndex: 1, explanation: 'Metin sindirim, bağışıklık düzenlemesi ve ruh sağlığı rollerini sayar.', questionType: 'Detay'),
+      ArticleQuestion(question: 'The word "harbour" is closest in meaning to ----.',  options: ['destroy', 'contain', 'reject', 'reduce'], correctIndex: 1, explanation: '"Harbour" burada barındırmak/içermek anlamındadır.', questionType: 'Kelime'),
+      ArticleQuestion(question: 'What is the most influential factor shaping gut microbial composition?', options: ['Genetics', 'Diet', 'Age', 'Gender'], correctIndex: 1, explanation: 'Metin diyetin tek başına en etkili faktör olduğunu belirtir.', questionType: 'Detay'),
+      ArticleQuestion(question: 'What can be inferred about FMT?', options: ['It is ineffective.', 'It works well for C. difficile and may help other conditions.', 'It is banned globally.', 'It only helps digestion.'], correctIndex: 1, explanation: 'FMT C. difficile için etkili ve diğer durumlar için araştırılıyor.', questionType: 'Çıkarım'),
+      ArticleQuestion(question: 'The author\'s overall tone is ----.',  options: ['dismissive', 'hopeful but acknowledges unknowns', 'entirely negative', 'sarcastic'], correctIndex: 1, explanation: 'Yazar umut verici olduğunu söylerken birçok sorunun yanıtlanmadığını kabul eder.', questionType: 'Yazarın Tutumu'),
+    ],
+  ),
+  // MAKALE 13-20 aşağıda
+  ...articlesExtra,
 ];
