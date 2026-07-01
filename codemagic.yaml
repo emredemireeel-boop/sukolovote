@@ -33,9 +33,21 @@ workflows:
       - name: Set up keychain
         script: |
           keychain initialize
-      - name: Decode certificate private key
+      - name: Prepare certificate private key
         script: |
-          echo "$CERTIFICATE_PRIVATE_KEY" | base64 --decode > /tmp/cert_key.pem
+          set -e
+          rm -f /tmp/cert_key.pem
+          if printf '%s' "$CERTIFICATE_PRIVATE_KEY" | grep -q "BEGIN"; then
+            printf '%s' "$CERTIFICATE_PRIVATE_KEY" > /tmp/cert_key.pem
+          else
+            printf '%s' "$CERTIFICATE_PRIVATE_KEY" | base64 --decode > /tmp/cert_key.pem 2>/dev/null || true
+          fi
+          if ! grep -q "BEGIN" /tmp/cert_key.pem 2>/dev/null; then
+            echo "Gecerli sertifika anahtari yok, yeni bir tane uretiliyor..."
+            rm -f /tmp/cert_key.pem
+            ssh-keygen -t rsa -b 2048 -m PEM -f /tmp/cert_key.pem -q -N ""
+          fi
+          echo "Sertifika anahtari hazir."
       - name: Fetch/create signing files
         script: |
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
