@@ -28,7 +28,7 @@ class MockExamsScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Çıkmış Sınavlar',
+                            'Deneme Sınavları',
                             style: GoogleFonts.outfit(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -36,7 +36,7 @@ class MockExamsScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Gerçek sınav formatında interaktif denemeler',
+                            'YÖKDİL Sağlık formatında • 5 şıklı denemeler',
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               color: AppTheme.textMuted,
