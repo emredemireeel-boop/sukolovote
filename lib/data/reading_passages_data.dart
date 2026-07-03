@@ -2378,9 +2378,9 @@ Melanoma is the least common but most dangerous type, as it is highly likely to 
     title: 'Parkinson\'s Disease',
     difficulty: 'Zor',
     topic: 'Nöroloji',
-    passage: \'\'\'Parkinson\'s disease is a progressive disorder of the nervous system that primarily affects movement. The hallmark pathology of the disease is the gradual degeneration and death of dopamine-producing neurons in a specific area of the brain called the substantia nigra. Dopamine is a critical neurotransmitter responsible for relaying messages that plan and control body movements.
+    passage: '''Parkinson\'s disease is a progressive disorder of the nervous system that primarily affects movement. The hallmark pathology of the disease is the gradual degeneration and death of dopamine-producing neurons in a specific area of the brain called the substantia nigra. Dopamine is a critical neurotransmitter responsible for relaying messages that plan and control body movements.
 
-As dopamine levels plummet, individuals begin to exhibit classic motor symptoms: resting tremors, rigidity, bradykinesia (slowness of movement), and postural instability. Non-motor symptoms, such as sleep disturbances and cognitive decline, also frequently occur as the disease advances. Currently, treatments like Levodopa help manage the motor symptoms by replenishing dopamine levels temporarily. Deep brain stimulation (DBS) is a surgical option for advanced cases, but a definitive cure remains undiscovered.\'\'\',
+As dopamine levels plummet, individuals begin to exhibit classic motor symptoms: resting tremors, rigidity, bradykinesia (slowness of movement), and postural instability. Non-motor symptoms, such as sleep disturbances and cognitive decline, also frequently occur as the disease advances. Currently, treatments like Levodopa help manage the motor symptoms by replenishing dopamine levels temporarily. Deep brain stimulation (DBS) is a surgical option for advanced cases, but a definitive cure remains undiscovered.''',
     vocabulary: [
       PassageVocab(english: 'hallmark', turkish: 'ayırt edici özellik', partOfSpeech: 'noun'),
       PassageVocab(english: 'degeneration', turkish: 'yozlaşma, bozulma', partOfSpeech: 'noun'),
