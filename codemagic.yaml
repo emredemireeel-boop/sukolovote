@@ -66,9 +66,16 @@ workflows:
       - name: Install CocoaPods
         script: |
           find . -name "Podfile" -execdir pod install \;
-      - name: Build iOS IPA
+      - name: Build iOS IPA (auto-increment build number)
         script: |
-          flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
+          # TestFlight'taki son build numarasini bul, +1 ver (yoksa 1'den basla)
+          LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_APPLE_ID" 2>/dev/null || echo "0")
+          if [ -z "$LATEST" ]; then LATEST=0; fi
+          BUILD_NUMBER=$(($LATEST + 1))
+          echo "Yeni build numarasi: $BUILD_NUMBER"
+          flutter build ipa --release \
+            --build-number=$BUILD_NUMBER \
+            --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
@@ -77,3 +84,5 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
+        beta_groups:
+          - süko

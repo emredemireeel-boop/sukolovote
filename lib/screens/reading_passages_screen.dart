@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/reading_passages_data.dart';
+import '../widgets/tappable_passage_text.dart';
 
 class ReadingPassagesScreen extends StatelessWidget {
   const ReadingPassagesScreen({super.key});
@@ -334,13 +335,15 @@ class _PassageDetailScreenState extends State<_PassageDetailScreen>
               borderRadius: BorderRadius.circular(18),
               border: Border.all(color: Colors.white.withOpacity(0.08)),
             ),
-            child: Text(
-              widget.passage.passage,
-              style: GoogleFonts.inter(
-                fontSize: 15,
-                height: 1.8,
-                color: AppTheme.textPrimary.withOpacity(0.9),
-              ),
+            child: TappablePassageText(
+              passage: widget.passage.passage,
+              vocabMap: {
+                for (final v in widget.passage.vocabulary)
+                  v.english.toLowerCase(): v.turkish,
+              },
+              fontSize: 15,
+              lineHeight: 1.8,
+              textColor: AppTheme.textPrimary.withOpacity(0.9),
             ),
           ),
           const SizedBox(height: 20),

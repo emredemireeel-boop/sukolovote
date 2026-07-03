@@ -1,6 +1,8 @@
 /// YÖKDİL Sağlık - Makale Modülü
 /// Sınavda çıkabilecek formatta akademik sağlık makaleleri, kelimeler ve sorular
 import 'articles_extra.dart';
+import 'articles_extra2.dart';
+import 'articles_extra3.dart';
 
 class Article {
   final int id;
@@ -952,4 +954,6 @@ Research into the microbiome is still in its early stages, and many questions re
   ),
   // MAKALE 13-20 aşağıda
   ...articlesExtra,
+  ...articlesExtra2,
+  ...articlesExtra3,
 ];

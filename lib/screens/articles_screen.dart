@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/articles_data.dart';
+import '../widgets/tappable_passage_text.dart';
 
 class ArticlesScreen extends StatelessWidget {
   const ArticlesScreen({super.key});
@@ -413,13 +414,15 @@ class _ArticleDetailScreenState extends State<_ArticleDetailScreen>
               borderRadius: BorderRadius.circular(18),
               border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
             ),
-            child: Text(
-              a.passage,
-              style: GoogleFonts.inter(
-                fontSize: 15,
-                height: 1.8,
-                color: AppTheme.textPrimary.withValues(alpha: 0.92),
-              ),
+            child: TappablePassageText(
+              passage: a.passage,
+              vocabMap: {
+                for (final v in a.vocabulary)
+                  v.english.toLowerCase(): v.turkish,
+              },
+              fontSize: 15,
+              lineHeight: 1.8,
+              textColor: AppTheme.textPrimary.withValues(alpha: 0.92),
             ),
           ),
           const SizedBox(height: 20),
