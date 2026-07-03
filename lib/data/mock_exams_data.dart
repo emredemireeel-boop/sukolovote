@@ -4,6 +4,10 @@
 // hazırlanmış ÖZGÜN DENEME sorularıdır. Her şıkkın Türkçe karşılığı ve doğru cevap
 // gösterilir.
 
+import 'mock_exam_2021.dart';
+import 'mock_exam_2020.dart';
+import 'mock_exam_2026.dart';
+
 class MockExam {
   final String id;
   final String title;
@@ -64,7 +68,31 @@ final List<MockExam> mockExams = [
     subtitle: 'YÖKDİL Sağlık formatında • 40 soru • 5 şıklı',
     year: 2,
     durationMinutes: 60,
+    questions: deneme2,
+  ),
+  MockExam(
+    id: 'yokdil_saglik_deneme_2020',
+    title: '2020 YÖKDİL/1 Sağlık Bilimleri',
+    subtitle: 'Gerçek Çıkmış Sınav • 80 soru • 5 şıklı',
+    year: 2020,
+    durationMinutes: 180,
+    questions: exam2020Real,
+  ),
+  MockExam(
+    id: 'yokdil_saglik_deneme_2021',
+    title: '2021 YÖKDİL/1 Sağlık Bilimleri',
+    subtitle: 'Gerçek Çıkmış Sınav • 80 soru • 5 şıklı',
+    year: 2021,
+    durationMinutes: 180,
     questions: exam2021,
+  ),
+  MockExam(
+    id: 'yokdil_saglik_deneme_2026',
+    title: '2026 MART YÖKDİL Sağlık Bilimleri',
+    subtitle: 'Gerçek Çıkmış Sınav • 80 soru • 5 şıklı',
+    year: 2026,
+    durationMinutes: 180,
+    questions: exam2026,
   ),
 ];
 
@@ -662,7 +690,7 @@ const List<ExamQuestion> exam2020 = [
 ];
 
 // ═══════════════════════ DENEME 2 (40 SORU, 5 ŞIKLI) ═══════════════════════
-const List<ExamQuestion> exam2021 = [
+const List<ExamQuestion> deneme2 = [
   // 1-8 Kelime
   ExamQuestion(
     number: 1,

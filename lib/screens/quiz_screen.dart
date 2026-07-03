@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/questions_data.dart';
 import '../widgets/glass_card.dart';
+import '../widgets/tappable_passage_text.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -467,27 +468,23 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                             color: Colors.white.withOpacity(0.06),
                           ),
                         ),
-                        child: Text(
-                          question.passage!,
-                          style: GoogleFonts.inter(
-                            fontSize: 13,
-                            color: AppTheme.textSecondary,
-                            height: 1.6,
-                            fontStyle: FontStyle.italic,
-                          ),
+                        child: TappablePassageText(
+                          passage: question.passage!,
+                          vocabMap: const {},
+                          fontSize: 13,
+                          lineHeight: 1.6,
+                          textColor: AppTheme.textSecondary,
                         ),
                       ),
                       const SizedBox(height: 16),
                     ],
 
-                    Text(
-                      question.question,
-                      style: GoogleFonts.inter(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppTheme.textPrimary,
-                        height: 1.6,
-                      ),
+                    TappablePassageText(
+                      passage: question.question,
+                      vocabMap: const {},
+                      fontSize: 16,
+                      lineHeight: 1.6,
+                      textColor: AppTheme.textPrimary,
                     ),
                     const SizedBox(height: 20),
 
@@ -530,15 +527,12 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                           child: Row(
                             children: [
                               Expanded(
-                                child: Text(
-                                  entry.value,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 14,
-                                    color: textColor,
-                                    fontWeight: (isSelected || (_answered && isCorrect))
-                                        ? FontWeight.w600
-                                        : FontWeight.w400,
-                                  ),
+                                child: TappablePassageText(
+                                  passage: entry.value,
+                                  vocabMap: const {},
+                                  fontSize: 14,
+                                  lineHeight: 1.4,
+                                  textColor: textColor,
                                 ),
                               ),
                               if (_answered && isCorrect)

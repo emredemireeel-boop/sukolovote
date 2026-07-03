@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/mock_exams_data.dart';
+import '../widgets/tappable_passage_text.dart';
 
 class MockExamsScreen extends StatelessWidget {
   const MockExamsScreen({super.key});
@@ -322,6 +323,14 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
     super.dispose();
   }
 
+  bool _showAnswer = false;
+
+  void _toggleShowAnswer() {
+    setState(() {
+      _showAnswer = !_showAnswer;
+    });
+  }
+
   String get _timeText {
     final m = (_remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final s = (_remainingSeconds % 60).toString().padLeft(2, '0');
@@ -541,13 +550,12 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  q.passageRef!,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 13.5,
-                                    height: 1.7,
-                                    color: AppTheme.textSecondary,
-                                  ),
+                                TappablePassageText(
+                                  passage: q.passageRef!,
+                                  vocabMap: const {},
+                                  fontSize: 13.5,
+                                  lineHeight: 1.7,
+                                  textColor: AppTheme.textSecondary,
                                 ),
                                 if (q.passageRefTr != null) ...[
                                   const SizedBox(height: 10),
@@ -585,14 +593,12 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                           ),
                         ],
                         const SizedBox(height: 14),
-                        Text(
-                          q.question,
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            height: 1.5,
-                            color: AppTheme.textPrimary,
-                          ),
+                        TappablePassageText(
+                          passage: q.question,
+                          vocabMap: const {},
+                          fontSize: 16,
+                          lineHeight: 1.5,
+                          textColor: AppTheme.textPrimary,
                         ),
                         const SizedBox(height: 18),
                         ...List.generate(q.options.length, (i) {
@@ -645,13 +651,12 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                                   ),
                                   const SizedBox(width: 12),
                                   Expanded(
-                                    child: Text(
-                                      q.options[i],
-                                      style: GoogleFonts.inter(
-                                        fontSize: 14,
-                                        height: 1.4,
-                                        color: AppTheme.textPrimary,
-                                      ),
+                                    child: TappablePassageText(
+                                      passage: q.options[i],
+                                      vocabMap: const {},
+                                      fontSize: 14,
+                                      lineHeight: 1.4,
+                                      textColor: AppTheme.textPrimary,
                                     ),
                                   ),
                                   if (isSel)
@@ -663,6 +668,68 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                             ),
                           );
                         }),
+                        const SizedBox(height: 24),
+                        if (!_showAnswer)
+                          Center(
+                            child: TextButton.icon(
+                              onPressed: _toggleShowAnswer,
+                              icon: const Icon(Icons.visibility_rounded, color: AppTheme.primaryCyan, size: 20),
+                              label: Text(
+                                'Cevabı Gör',
+                                style: GoogleFonts.inter(
+                                  color: AppTheme.primaryCyan,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          )
+                        else
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: AppTheme.accentEmerald.withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(color: AppTheme.accentEmerald.withValues(alpha: 0.3)),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Doğru Cevap: ${q.correctLetter}',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppTheme.accentEmerald,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  q.explanation,
+                                  style: GoogleFonts.inter(
+                                    color: AppTheme.textPrimary,
+                                    height: 1.5,
+                                  ),
+                                ),
+                                if (q.optionsTr != null) ...[
+                                  const SizedBox(height: 12),
+                                  const Divider(color: Colors.white24, height: 1),
+                                  const SizedBox(height: 12),
+                                  ...List.generate(q.optionsTr!.length, (i) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(bottom: 4),
+                                      child: Text(
+                                        '${String.fromCharCode(65 + i)}) ${q.optionsTr![i]}',
+                                        style: GoogleFonts.inter(
+                                          fontSize: 13,
+                                          color: AppTheme.textSecondary,
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                                ],
+                              ],
+                            ),
+                          ),
+                        const SizedBox(height: 30),
                       ],
                     ),
                   ),
@@ -684,7 +751,12 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                         icon: Icons.arrow_back_rounded,
                         label: 'Önceki',
                         enabled: _current > 0,
-                        onTap: () => setState(() => _current--),
+                        onTap: () {
+                          setState(() {
+                            _current--;
+                            _showAnswer = false;
+                          });
+                        },
                       ),
                       const SizedBox(width: 12),
                       GestureDetector(
@@ -709,7 +781,12 @@ class _ExamRunnerScreenState extends State<_ExamRunnerScreen> {
                                 enabled: true,
                                 primary: true,
                                 trailingIcon: true,
-                                onTap: () => setState(() => _current++),
+                                onTap: () {
+                                  setState(() {
+                                    _current++;
+                                    _showAnswer = false;
+                                  });
+                                },
                               )
                             : _navButton(
                                 icon: Icons.flag_rounded,

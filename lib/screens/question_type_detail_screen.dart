@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/questions_data.dart';
 import '../widgets/glass_card.dart';
+import '../widgets/tappable_passage_text.dart';
 
 class QuestionTypeDetailScreen extends StatefulWidget {
   final QuestionType questionType;
@@ -328,13 +329,25 @@ class _QuestionTypeDetailScreenState extends State<QuestionTypeDetailScreen> {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.white.withOpacity(0.06)),
               ),
-              child: Text(example.passage!, style: GoogleFonts.inter(fontSize: 13, color: AppTheme.textSecondary, height: 1.6, fontStyle: FontStyle.italic)),
+              child: TappablePassageText(
+                passage: example.passage!,
+                vocabMap: const {},
+                fontSize: 13,
+                lineHeight: 1.6,
+                textColor: AppTheme.textSecondary,
+              ),
             ),
             const SizedBox(height: 14),
           ],
 
           // Question
-          Text(example.question, style: GoogleFonts.inter(fontSize: 14, color: AppTheme.textPrimary, fontWeight: FontWeight.w500, height: 1.6)),
+          TappablePassageText(
+            passage: example.question,
+            vocabMap: const {},
+            fontSize: 14,
+            lineHeight: 1.6,
+            textColor: AppTheme.textPrimary,
+          ),
           const SizedBox(height: 14),
 
           // Options
@@ -356,7 +369,13 @@ class _QuestionTypeDetailScreenState extends State<QuestionTypeDetailScreen> {
                   if (isCorrect) const Icon(Icons.check_circle_rounded, size: 18, color: AppTheme.accentEmerald),
                   if (isCorrect) const SizedBox(width: 8),
                   Expanded(
-                    child: Text(entry.value, style: GoogleFonts.inter(fontSize: 13, color: isCorrect ? AppTheme.accentEmerald : AppTheme.textSecondary, fontWeight: isCorrect ? FontWeight.w600 : FontWeight.w400)),
+                    child: TappablePassageText(
+                      passage: entry.value,
+                      vocabMap: const {},
+                      fontSize: 13,
+                      lineHeight: 1.4,
+                      textColor: isCorrect ? AppTheme.accentEmerald : AppTheme.textSecondary,
+                    ),
                   ),
                 ],
               ),

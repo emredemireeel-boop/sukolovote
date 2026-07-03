@@ -74,7 +74,7 @@ class _HealthTermsScreenState extends State<HealthTermsScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${healthTerms.length} terim • İngilizce-Türkçe',
+                  '${_allTerms.length} terim • İngilizce-Türkçe',
                   style: GoogleFonts.inter(
                     fontSize: 14,
                     color: AppTheme.textSecondary,

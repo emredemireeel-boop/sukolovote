@@ -1,3 +1,5 @@
+import 'health_terms_extra.dart';
+
 class HealthTerm {
   final String english;
   final String turkish;
@@ -29,6 +31,7 @@ final List<TermCategory> termCategories = [
   const TermCategory(name: 'Tanı & Teşhis', icon: '🔍', color: '#D97706'),
   const TermCategory(name: 'Halk Sağlığı', icon: '🏥', color: '#2563EB'),
   const TermCategory(name: 'Genel Tıp', icon: '⚕️', color: '#6366F1'),
+  const TermCategory(name: 'Fiiller', icon: '🏃', color: '#EAB308'),
 ];
 
 final List<HealthTerm> healthTerms = [
@@ -190,4 +193,5 @@ final List<HealthTerm> healthTerms = [
   const HealthTerm(english: 'specimen', turkish: 'numune / örnek', category: 'Genel Tıp'),
   const HealthTerm(english: 'contraindication', turkish: 'kontrendikasyon', category: 'Genel Tıp'),
   const HealthTerm(english: 'clinical', turkish: 'klinik', category: 'Genel Tıp'),
+  ...extraVerbs,
 ];

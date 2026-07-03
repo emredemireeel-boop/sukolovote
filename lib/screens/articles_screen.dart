@@ -707,14 +707,12 @@ class _ArticleQuizViewState extends State<_ArticleQuizView> {
               borderRadius: BorderRadius.circular(16),
               border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
             ),
-            child: Text(
-              q.question,
-              style: GoogleFonts.inter(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: AppTheme.textPrimary,
-                height: 1.5,
-              ),
+            child: TappablePassageText(
+              passage: q.question,
+              vocabMap: const {},
+              fontSize: 15,
+              lineHeight: 1.5,
+              textColor: AppTheme.textPrimary,
             ),
           ),
           const SizedBox(height: 16),
@@ -773,13 +771,12 @@ class _ArticleQuizViewState extends State<_ArticleQuizView> {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
-                        q.options[i],
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          color: textColor,
-                          height: 1.4,
-                        ),
+                      child: TappablePassageText(
+                        passage: q.options[i],
+                        vocabMap: const {},
+                        fontSize: 14,
+                        lineHeight: 1.4,
+                        textColor: textColor,
                       ),
                     ),
                     if (_answered && isCorrect)
