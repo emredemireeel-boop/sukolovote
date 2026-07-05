@@ -81,12 +81,18 @@ class NotificationService {
     importance: Importance.max,
     priority: Priority.high,
     playSound: true,
+    sound: RawResourceAndroidNotificationSound('bildirimsesi'),
     enableVibration: true,
   );
 
   static const NotificationDetails _details = NotificationDetails(
     android: _androidDetails,
-    iOS: DarwinNotificationDetails(presentSound: true, presentAlert: true),
+    iOS: DarwinNotificationDetails(
+      presentSound: true,
+      presentAlert: true,
+      presentBadge: true,
+      sound: 'bildirimsesi.mp3',
+    ),
   );
 
   /// Önümüzdeki ~2 ay için 3 günde bir tatlı mesaj planlar (saat 10:00).

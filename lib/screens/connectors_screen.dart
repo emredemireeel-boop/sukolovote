@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/connectors_data.dart';
+import 'quiz_screen.dart';
 
 class ConnectorsScreen extends StatefulWidget {
   const ConnectorsScreen({super.key});
@@ -71,7 +72,42 @@ class _ConnectorsScreenState extends State<ConnectorsScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 48),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFFEC4899), Color(0xFFF43F5E)],
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: () {
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => const QuizScreen(questionTypeId: 'conjunctions_grammar')));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.quiz_rounded, color: Colors.white, size: 16),
+                                const SizedBox(width: 4),
+                                Text(
+                                  'Soru Çöz',
+                                  style: GoogleFonts.outfit(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

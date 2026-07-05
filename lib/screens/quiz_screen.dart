@@ -6,7 +6,8 @@ import '../widgets/glass_card.dart';
 import '../widgets/tappable_passage_text.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  final String? questionTypeId;
+  const QuizScreen({super.key, this.questionTypeId});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -27,8 +28,16 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _quizQuestions = [];
-    for (var qt in questionTypes) {
-      _quizQuestions.addAll(qt.examples);
+    if (widget.questionTypeId != null) {
+      for (var qt in questionTypes) {
+        if (qt.id == widget.questionTypeId) {
+          _quizQuestions.addAll(qt.examples);
+        }
+      }
+    } else {
+      for (var qt in questionTypes) {
+        _quizQuestions.addAll(qt.examples);
+      }
     }
     _quizQuestions.shuffle();
 

@@ -18,6 +18,7 @@ import 'custom_words_screen.dart';
 import 'reading_passages_screen.dart';
 import 'cikmis_fiiller_screen.dart';
 import '../data/articles_data.dart';
+import 'advice_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -312,6 +313,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               const SizedBox(height: 14),
               _buildQuickAccessGrid(),
+              const SizedBox(height: 16),
+              _buildAdviceBanner(),
               const SizedBox(height: 24),
 
               // Havuzlar (Bağlaç & Kelime)
@@ -470,6 +473,73 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildAdviceBanner() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const AdviceListScreen()),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              const Color(0xFFF59E0B).withOpacity(0.2),
+              const Color(0xFFD97706).withOpacity(0.1),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: const Color(0xFFF59E0B).withOpacity(0.3)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF59E0B).withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Center(
+                child: Text('💡', style: TextStyle(fontSize: 24)),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Başarı Tavsiyeleri',
+                    style: GoogleFonts.outfit(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: AppTheme.textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Derece yapanlardan altın taktikler',
+                    style: GoogleFonts.inter(
+                      fontSize: 12,
+                      color: AppTheme.textSecondary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios_rounded, color: Color(0xFFF59E0B), size: 16),
+          ],
+        ),
+      ),
     );
   }
 
@@ -708,7 +778,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '9 Kategori • 70+ Bağlaç',
+                        '9 Kategori • 90+ Bağlaç',
                         style: GoogleFonts.inter(
                           fontSize: 11,
                           color: const Color(0xFFEC4899),

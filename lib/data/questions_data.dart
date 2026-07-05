@@ -49,6 +49,280 @@ class ExampleQuestion {
 
 final List<QuestionType> questionTypes = [
   // ═══════════════════════════════════════════════════════
+  // ÖZEL BÖLÜM: BAĞLAÇLAR VE GRAMER
+  // ═══════════════════════════════════════════════════════
+  QuestionType(
+    id: 'conjunctions_grammar',
+    title: 'Bağlaçlar & Gramer',
+    subtitle: 'Özel Bölüm • Bağlaç Kuralları',
+    icon: '🔗',
+    questionCount: 20,
+    description:
+        'Bağlaçlar YÖKDİL ve YDS sınavlarının omurgasıdır. Bu bölümde bağlaçların dilbilgisi (gramer) ile olan hayati bağlantısını öğreneceksiniz.',
+    detailedExplanation:
+        'Bağlaç soruları sadece anlama bakılarak ÇÖZÜLMEZ. Her bağlacın kendine has bir gramer kuralı vardır:\n\n'
+        '📌 CÜMLE (S+V+O) ALANLAR vs. İSİM (Noun/V-ing) ALANLAR:\n'
+        '• "Although, Even though, Though, Because, Since, As" arkasından TAM CÜMLE alır.\n'
+        '• "Despite, In spite of, Because of, Due to" arkasından İSİM, ZAMİR veya V-ing alır.\n\n'
+        '📌 ZAMAN UYUMU İSTEYENLER:\n'
+        '• "By the time, Before, After, When, As soon as" zaman uyumu (Tense Harmony) ister.\n'
+        '• Örnek: By the time + Past Simple → Past Perfect gelir.\n\n'
+        '📌 KENDİNE HAS KURALLARI OLANLAR:\n'
+        '• "Unless" = If not. Kendisinden sonraki cümle yapıca OLUMLU, anlamca OLUMSUZDUR.\n'
+        '• "So that / In order that" = -sın diye. Kendisinden sonra genellikle can, could, will, would modalları gelir.',
+    strategies: [
+      'Boşluktan sonra TAM CÜMLE (Özne + Yüklem) mi var, yoksa sadece İSİM (veya V-ing) mi var? İlk kontrolünüz bu olmalı.',
+      'Zıtlık mı, Sebep-Sonuç mu, yoksa Koşul mu? Anlam ilişkisini belirleyin.',
+      'Boşluktan sonra "can, could, will, would" gibi modallar varsa "so that" veya "in order that" seçeneklerine odaklanın.',
+      'Cümlede zaman bağlacı (when, by the time) varsa mutlaka her iki taraftaki fiillerin tense uyumuna bakın.'
+    ],
+    tips: [
+      '💡 Despite the fact that = Although (Arkasından tam cümle alır)',
+      '💡 Due to the fact that = Because (Arkasından tam cümle alır)',
+      '💡 "Unless" olan bir cümlenin fiilinde "not, never" olmaz. Örn: "Unless you study..." (Çalışmazsan)',
+      '💡 "Because of" arkasından asla doğrudan cümle gelmez, isim yöbeği (noun phrase) gelir.'
+    ],
+    commonMistakes: [
+      '❌ "Despite he was ill" → YANLIŞ. Doğrusu: "Despite being ill" veya "Although he was ill".',
+      '❌ "Because of it rained" → YANLIŞ. Doğrusu: "Because of the rain" veya "Because it rained".',
+      '❌ "Unless you don\'t study" → YANLIŞ. Doğrusu: "Unless you study".'
+    ],
+    keyPhrases: [
+      'despite the fact that — -e rağmen',
+      'due to — -den dolayı / yüzünden',
+      'provided that — koşuluyla',
+      'so that — -sın diye',
+      'in order to — -mek için'
+    ],
+    examples: [
+      ExampleQuestion(
+        question: '---- the severe side effects of the medication, the patient decided to continue the treatment.',
+        options: ['A) Although', 'B) Because', 'C) Despite', 'D) Since', 'E) Even though'],
+        correctIndex: 2,
+        explanation: 'Boşluktan sonra "the severe side effects of the medication" (ilacın şiddetli yan etkileri) bir İSİM TAMLAMASIDIR. Özne + Yüklem (fiil) yoktur. "Although, Even though, Because, Since" arkasından tam cümle ister. İsim aldığı için "Despite" doğru cevaptır.',
+        stepByStep: '1️⃣ Boşluktan hemen sonraki yapıya bak: "the severe side effects of the medication"\n'
+            '2️⃣ İçinde FİİL var mı? Hayır, bu bir İSİM TAMLAMASI (Noun Phrase).\n'
+            '3️⃣ Şıkları gramer kuralına göre ele:\n   • Although / Even though / Because / Since → Tam cümle (Özne + Fiil) ister. ❌\n   • Despite → İsim veya V-ing ister. ✅\n'
+            '4️⃣ Sonuç: C şıkkı gramer olarak tek olası cevaptır.',
+      ),
+      ExampleQuestion(
+        question: 'The hospital implemented a new strict hygiene protocol ---- they could reduce the rate of hospital-acquired infections.',
+        options: ['A) as if', 'B) so that', 'C) in case', 'D) provided that', 'E) even though'],
+        correctIndex: 1,
+        explanation: 'Cümlenin ikinci kısmında "could reduce" (azaltabilsinler diye) bir MODAL vardır. "So that" (ve "in order that") kendisinden sonra amaç bildiren modallar (can, could, will, would) almayı çok sever.',
+        stepByStep: '1️⃣ Boşluktan sonraki cümleyi analiz et: "they could reduce..."\n'
+            '2️⃣ Bir AMAÇ ve MODAL ("could") var. Hastane hijyen protokolünü uyguladı, AMACI neydi? "Enfeksiyon oranını azaltabilmek İÇİN / azalsın DİYE".\n'
+            '3️⃣ Şıklara bak:\n   • "so that" + can/could/will/would = -sın diye (Amaç bildirir) ✅\n   • "as if" = mış gibi ❌\n   • "in case" = durumunda (genelde present/past simple ile kullanılır) ❌\n'
+            '4️⃣ Sonuç: B şıkkı.',
+      ),
+      ExampleQuestion(
+        question: 'By the time the ambulance ---- at the scene, the injured pedestrians ---- basic first aid by the bystanders.',
+        options: ['A) arrives / were given', 'B) has arrived / are given', 'C) arrived / had been given', 'D) had arrived / gave', 'E) will arrive / had given'],
+        correctIndex: 2,
+        explanation: 'Gramer kuralı: "By the time" geçmişte bir nokta belirtiyorsa, temel cümle her zaman Past Perfect (had + V3) olur. "Ambulans varana kadar (arrived), ilk yardım çoktan verilmişti (had been given).',
+        stepByStep: '1️⃣ "By the time" bir zaman bağlacıdır ve ZAMAN UYUMU (tense harmony) gerektirir.\n'
+            '2️⃣ Kural: By the time + Past Simple (V2) → Diğer taraf Past Perfect (had + V3).\n'
+            '3️⃣ Şıkları incele: C şıkkında "arrived" (Past Simple) ve "had been given" (Past Perfect Passive) tam olarak bu formüle uyar. ✅\n'
+            '4️⃣ Sonuç: C şıkkı.',
+      ),
+      ExampleQuestion(
+        question: '---- you take your prescribed medication regularly, your blood pressure will not stabilize.',
+        options: ['A) If', 'B) As long as', 'C) Provided that', 'D) Unless', 'E) Because'],
+        correctIndex: 3,
+        explanation: '"Unless" = "if not" demektir. Cümle: "İlaçlarını düzenli ALMAZSAN (unless you take), tansiyonun dengelenmeyecek (will not stabilize)." Anlamca olumsuz koşul gereklidir.',
+        stepByStep: '1️⃣ Cümleleri çevir ve mantığını kur:\n   • ... ilaçlarını düzenli alıyorsun\n   • Tansiyonun dengelenmeyecek\n'
+            '2️⃣ Bu iki cümleyi nasıl bağlarız? "İlaçlarını düzenli ALMAZSAN, dengelenmeyecek."\n'
+            '3️⃣ Şıklarda "If you don\'t take" var mı? Yok. O zaman bunun yerine geçen kelimeyi bul: UNLESS.\n'
+            '4️⃣ "Unless you take" = "If you don\'t take". ✅\n'
+            '5️⃣ Sonuç: D şıkkı.',
+      ),
+      ExampleQuestion(
+        question: 'The clinical trials were halted immediately ---- the researchers discovered a potentially fatal flaw in the drug\'s design.',
+        options: ['A) because of', 'B) despite', 'C) due to', 'D) because', 'E) therefore'],
+        correctIndex: 3,
+        explanation: 'Boşluktan sonra "the researchers discovered..." şeklinde bir TAM CÜMLE var. "Because of" ve "due to" arkasından sadece isim alır. "Because" ise tam cümle alır.',
+        stepByStep: '1️⃣ Boşluktan sonra TAM CÜMLE mi var, İSİM mi var?\n   • "the researchers" (Özne) + "discovered" (Yüklem/Fiil). Yani TAM CÜMLE!\n'
+            '2️⃣ Şıklardaki gramer kurallarını hatırla:\n   • "because of", "due to", "despite" → Bunlar "Prepositional Phrase"dir ve sadece İSİM (Noun/V-ing) alırlar. Cümle ALAMAZLAR! ❌\n   • "therefore" → Cümle başı veya noktalı virgülden sonra gelir, doğrudan iki cümleyi bağlamaz. ❌\n   • "because" → Kendisinden sonra Özne + Yüklem alır. ✅\n'
+            '3️⃣ Sonuç: D şıkkı.',
+      ),
+      ExampleQuestion(
+        question: '---- the surgeons had successfully removed the tumor, the patient was kept in the intensive care unit for close observation.',
+        options: ['A) Even though', 'B) Due to', 'C) In spite of', 'D) Therefore', 'E) In case of'],
+        correctIndex: 0,
+        explanation: 'Boşluktan sonra "the surgeons had successfully removed the tumor" (cerrahlar tümörü başarıyla çıkarmış olsa da) şeklinde tam bir cümle vardır. A şıkkı (Even though) tam cümle alır. B, C ve E şıkları isim alır. D şıkkı ise cümle başında bu şekilde zıtlık bağlacı olarak kullanılmaz.',
+        stepByStep: '1️⃣ Boşluktan sonra tam cümle (Özne + Yüklem) mi var, yoksa isim mi?\\n   • "the surgeons" (Özne) + "had removed" (Yüklem). Tam cümle!\\n'
+            '2️⃣ Şıkları ele:\\n   • Due to / In spite of / In case of → Sadece İSİM (veya V-ing) alırlar. ❌\\n   • Therefore → Bu yüzden demektir, iki bağımsız cümlenin arasına girer. ❌\\n'
+            '3️⃣ "Even though" tam cümle alır ve "çıkarmış olmalarına RAĞMEN, yoğun bakımda tutuldu" diyerek zıtlığı mükemmel verir. ✅\\n'
+            '4️⃣ Sonuç: A şıkkı.',
+      ),
+      ExampleQuestion(
+        question: 'Patients with severe asthma must carry their inhalers at all times ---- they experience a sudden and unexpected attack.',
+        options: ['A) as long as', 'B) provided that', 'C) in case', 'D) so that', 'E) unless'],
+        correctIndex: 2,
+        explanation: 'Astım hastalarının inhaler (nefes açıcı) ilaçlarını her zaman yanlarında taşımaları gerekir, çünkü ani bir kriz yaşayabilirler. "In case" (olur diye, durumunda, ne olur ne olmaz diye) tam olarak bu "önlem alma" anlamını verir.',
+        stepByStep: '1️⃣ İki cümleyi incele:\\n   • İnhaler taşımalılar (Önlem)\\n   • Ani bir atak geçirebilirler (Olası kötü durum)\\n'
+            '2️⃣ Bir olaya karşı ÖNLEM alma durumu varsa her zaman "in case" kullanılır. "Atak geçirirler diye (geçirmesi ihtimaline karşı) taşımalılar."\\n'
+            '3️⃣ Şıklara bak:\\n   • as long as / provided that = -dığı sürece / şartıyla ❌\\n   • so that = -sın diye (Amaç bildirir, arkasından genellikle modal gelir) ❌\\n   • in case = ...olur diye (Önlem) ✅\\n'
+            '4️⃣ Sonuç: C şıkkı.',
+      ),
+      ExampleQuestion(
+        question: '---- advances in modern medicine, the global prevalence of certain infectious diseases has continued to rise over the past decade.',
+        options: ['A) Because of', 'B) Rather than', 'C) In addition to', 'D) Despite', 'E) As a result of'],
+        correctIndex: 3,
+        explanation: '"Modern tıptaki ilerlemelere RAĞMEN (Despite advances in modern medicine), enfeksiyon hastalıklarının küresel yaygınlığı artmaya devam etti." Zıtlık ilişkisi var ve boşluktan sonra isim (advances) gelmiş.',
+        stepByStep: '1️⃣ Boşluktan sonraki yapıya bak: "advances in modern medicine" (modern tıptaki ilerlemeler). Bu bir İSİM TAMLAMASI.\\n'
+            '2️⃣ Anlam ilişkisini kur:\\n   • Modern tıpta ilerlemeler var (+) \\n   • Hastalıklar artmaya devam ediyor (-)\\n'
+            '3️⃣ Zıtlık gerekiyor. Şıklara bakalım:\\n   • Because of / As a result of → Sebep (İlerlemelerden dolayı hastalık arttı diyemeyiz) ❌\\n   • In addition to → Ek bilgi ❌\\n   • Despite → İsim alan zıtlık bağlacı ✅\\n'
+            '4️⃣ Sonuç: D şıkkı.',
+      ),
+      ExampleQuestion(
+        question: 'The new experimental therapy proved to be highly effective; ----, it caused fewer adverse side effects compared to the standard treatment.',
+        options: ['A) however', 'B) moreover', 'C) otherwise', 'D) on the contrary', 'E) nevertheless'],
+        correctIndex: 1,
+        explanation: 'Noktalı virgülden önceki cümle olumlu ("highly effective"). Sonraki cümle de olumlu ("fewer adverse side effects" - daha az yan etki). İki olumlu özelliği bağlarken "üstelik, dahası" anlamına gelen "moreover, furthermore, in addition" kullanılır.',
+        stepByStep: '1️⃣ İki cümle arasındaki anlam ilişkisine bak (Paralel mi, Zıt mı?):\n   • 1. cümle: "highly effective" (çok etkili) -> OLUMLU (+)\n   • 2. cümle: "fewer adverse side effects" (daha az yan etki) -> OLUMLU (+)\n'
+            '2️⃣ Şıkları incele:\n   • however / on the contrary / nevertheless → Zıtlık bağlaçlarıdır (+/-) ❌\n   • otherwise → Aksi takdirde (Gizli koşul) ❌\n   • moreover → Paralel yapıları bağlar, ek bilgi verir (+/+) ✅\n'
+            '3️⃣ Sonuç: B şıkkı.',
+      ),
+      ExampleQuestion(
+        question: 'The pediatrician advised the parents not to give the baby solid foods ---- he reached at least six months of age.',
+        options: ['A) when', 'B) because', 'C) until', 'D) as if', 'E) once'],
+        correctIndex: 2,
+        explanation: '"Katı yiyecek verme" eyleminin zaman sınırı çiziliyor. "En az 6 aylık OLANA KADAR (until he reached) katı yiyecek vermeyin." "Until" zaman bildiren eylemin bitiş veya başlangıç noktasını vurgular.',
+        stepByStep: '1️⃣ Cümleyi analiz et: "Çocuk doktoru, bebek 6 aylık ... ebeveynlere katı gıda vermemelerini tavsiye etti."\n'
+            '2️⃣ Mantıken buraya ne gelir? "6 aylık OLANA KADAR".\n'
+            '3️⃣ Şıklara bak:\n   • when = olduğunda\n   • until = olana kadar ✅\n   • once = olur olmaz\n'
+            '4️⃣ Anlamca en uygun olan C şıkkıdır.',
+      ),
+      ExampleQuestion(
+        question: '---- the widespread use of vaccines, smallpox was successfully eradicated globally in 1980.',
+        options: ['A) In spite of', 'B) Thanks to', 'C) As opposed to', 'D) In terms of', 'E) Rather than'],
+        correctIndex: 1,
+        explanation: 'Olumlu bir neden-sonuc iliskisi var. Asilarin yaygin kullanimi SAYESINDE (Thanks to) cicek hastaligi 1980 de kuresel olarak yok edildi. Bosluktan sonra isim (the widespread use) gelmis.',
+        stepByStep: '1. Anlam iliskisine bak: Asilarin yaygin kullanimi -> Cicek hastaliginin yok edilmesi.\n'
+            '2. Bu olumlu bir sebep-sonuc iliskisidir. Asilar SAYESINDE yok edildi.\n'
+            '3. Siklari ele: In spite of = ragmen (Zitlik), As opposed to = aksine (Zitlik), Thanks to = sayesinde (Olumlu sebep-sonuc) DOGRU.\n'
+            '4. Sonuc: B sikki.',
+      ),
+      ExampleQuestion(
+        question: 'The new antiviral drug showed promising results in laboratory tests; ----, further clinical trials are needed before it can be approved for public use.',
+        options: ['A) Moreover', 'B) Therefore', 'C) Nevertheless', 'D) As a result', 'E) In addition'],
+        correctIndex: 2,
+        explanation: 'Ilac laboratuvarda umut verici sonuclar gosterdi AMA daha fazla klinik deney gerekiyor. Bu bir ZITLIK iliskisidir ve "Nevertheless" (buna ragmen, yine de) dogru cevaptir.',
+        stepByStep: '1. Noktali virgulden once: Olumlu bilgi (umut verici sonuclar).\n'
+            '2. Noktali virgulden sonra: Kisitlayici bilgi (daha fazla deney gerekiyor).\n'
+            '3. Zitlik baglaci gerekiyor: Nevertheless = buna ragmen, yine de. DOGRU.\n'
+            '4. Moreover/In addition = ek bilgi, Therefore/As a result = sonuc. YANLIS.\n'
+            '5. Sonuc: C sikki.',
+      ),
+      ExampleQuestion(
+        question: '---- the rapid spread of the virus, the government imposed strict quarantine measures across the country.',
+        options: ['A) Despite', 'B) Although', 'C) Due to', 'D) Even though', 'E) Whereas'],
+        correctIndex: 2,
+        explanation: 'Virusun hizla yayilmasi YUZUNDEN (Due to) hukumet siki karantina onlemleri aldi. Boslugun ardindan isim tamlamasi (the rapid spread) gelmis. Due to isim alir.',
+        stepByStep: '1. Bosluktan sonraki yapiya bak: "the rapid spread of the virus" -> ISIM TAMLAMASI.\n'
+            '2. Anlam iliskisi: Virus yayildi -> Hukumet karantina uygulamaya basladi = SEBEP-SONUC.\n'
+            '3. Due to = -den dolayi (isim alir, sebep bildirir). DOGRU.\n'
+            '4. Although/Even though = -e ragmen (tam cumle alir). YANLIS.\n'
+            '5. Sonuc: C sikki.',
+      ),
+      ExampleQuestion(
+        question: 'The transplant surgery will proceed ---- the donor and recipient blood types are fully compatible.',
+        options: ['A) unless', 'B) although', 'C) whereas', 'D) provided that', 'E) despite'],
+        correctIndex: 3,
+        explanation: 'Nakil ameliyati, verici ve alicinin kan gruplari tamamen uyumlu OLDUGU TAKDIRDE (provided that) yapilacak. Kosul bildiren bir baglac gerekiyor.',
+        stepByStep: '1. Iki cumleyi analiz et: Ameliyat yapilacak + Kan gruplari uyumlu olmali.\n'
+            '2. Anlam: "Uyumlu OLMASI KOSULUYLA ameliyat yapilacak" -> KOSUL iliskisi.\n'
+            '3. Provided that = kosuluyla, -digi takdirde. DOGRU.\n'
+            '4. Unless = degilse (olumsuz kosul), Although = ragmen (zitlik). YANLIS.\n'
+            '5. Sonuc: D sikki.',
+      ),
+      ExampleQuestion(
+        question: 'The WHO launched a global vaccination campaign ---- developing countries could gain access to life-saving vaccines.',
+        options: ['A) even though', 'B) so that', 'C) in spite of', 'D) whereas', 'E) unless'],
+        correctIndex: 1,
+        explanation: 'DSO kuresel asilama kampanyasi baslatti, gelismekte olan ulkeler hayat kurtaran asilara erisebilsin DIYE (so that). Amac bildiren bir baglac gerekiyor.',
+        stepByStep: '1. Bosluktan sonra "developing countries could gain access" -> "could" MODALI var.\n'
+            '2. Amac bildiren baglaclar arkasinda can/could/will/would gibi modallar alir.\n'
+            '3. So that + could = -sin diye, -ebilmesi icin. DOGRU.\n'
+            '4. Even though = ragmen, Whereas = oysa. Amac bildirmez. YANLIS.\n'
+            '5. Sonuc: B sikki.',
+      ),
+      ExampleQuestion(
+        question: '---- conventional antibiotics target bacteria, antiviral drugs are specifically designed to combat viruses.',
+        options: ['A) Moreover', 'B) In addition', 'C) Whereas', 'D) Therefore', 'E) Furthermore'],
+        correctIndex: 2,
+        explanation: 'Geleneksel antibiyotikler bakterileri hedeflerken (whereas), antiviral ilaclar ozellikle viruslere karsi tasarlanmistir. Iki farkli seyi karsilastiran bir ZITLIK/KARSILASTIRMA baglaci gerekiyor.',
+        stepByStep: '1. Iki farkli konuyu karsilastiran bir yapi var:\n'
+            '   Antibiyotikler -> bakterileri hedefler.\n'
+            '   Antiviral ilaclar -> viruslere karsi tasarlanmistir.\n'
+            '2. Bu bir KARSILASTIRMA iliskisidir.\n'
+            '3. Whereas = -ken, oysa (karsilastirma). DOGRU.\n'
+            '4. Moreover/Furthermore/In addition = ek bilgi. YANLIS.\n'
+            '5. Sonuc: C sikki.',
+      ),
+      ExampleQuestion(
+        question: 'Patients must continue taking their prescribed medication ---- they feel better, as premature discontinuation can lead to relapse.',
+        options: ['A) even if', 'B) so that', 'C) because', 'D) unless', 'E) provided that'],
+        correctIndex: 0,
+        explanation: 'Hastalar kendilerini daha iyi hissetseler BILE (even if) ilaclarini almaya devam etmelidir. Ilaci erken birakmak nuks yapabilir.',
+        stepByStep: '1. Cumleyi analiz et: "Ilac almaya devam etmeli" + "Kendini iyi hissediyor"\n'
+            '2. Mantik: Iyi hissetmek ilaci birakma sebebi OLMAMALI -> "iyi hissetseler BILE"\n'
+            '3. Even if = -se bile (gercek veya hayali durumlar icin). DOGRU.\n'
+            '4. Unless = degilse, So that = -sin diye. Anlama uymuyor. YANLIS.\n'
+            '5. Sonuc: A sikki.',
+      ),
+      ExampleQuestion(
+        question: 'No sooner ---- the surgeon completed the bypass operation than the patient showed signs of cardiac arrhythmia.',
+        options: ['A) did', 'B) has', 'C) was', 'D) had', 'E) would'],
+        correctIndex: 3,
+        explanation: 'No sooner + HAD + Ozne + V3 ... than ... Past Simple. Devrik (inverted) yapi: "No sooner had the surgeon completed... than the patient showed..."',
+        stepByStep: '1. "No sooner ... than" kalibini tani -> "yapar yapmaz" anlaminda.\n'
+            '2. Gramer kurali: No sooner + had + S + V3 ... than + S + V2 (Past Simple).\n'
+            '3. Devrik yapi: "No sooner HAD the surgeon completed" -> Past Perfect.\n'
+            '4. "than the patient showed" -> Past Simple. Kural uyumlu.\n'
+            '5. Sonuc: D sikki.',
+      ),
+      ExampleQuestion(
+        question: 'Chemotherapy can effectively destroy cancer cells; ----, it may also damage healthy tissue in the process.',
+        options: ['A) in addition', 'B) on the other hand', 'C) as a result', 'D) in other words', 'E) for instance'],
+        correctIndex: 1,
+        explanation: 'Kemoterapi kanser hucrelerini yok edebilir (olumlu); DIGER TARAFTAN (on the other hand), saglikli dokulara da zarar verebilir (olumsuz). Karsilastirma/zitlik baglaci gerekiyor.',
+        stepByStep: '1. Iki cumle arasindaki iliskiyi bul:\n'
+            '   1. cumle: Kanser hucrelerini yok eder -> OLUMLU (+)\n'
+            '   2. cumle: Saglikli dokuya zarar verir -> OLUMSUZ (-)\n'
+            '2. Zitlik/karsilastirma iliskisi var.\n'
+            '3. On the other hand = diger taraftan (iki yonu karsilastirir). DOGRU.\n'
+            '4. In addition = ayrica (ek bilgi), As a result = sonuc olarak. YANLIS.\n'
+            '5. Sonuc: B sikki.',
+      ),
+      ExampleQuestion(
+        question: '---- does regular physical activity reduce the risk of cardiovascular disease, ---- it also improves mental health outcomes.',
+        options: ['A) Neither / nor', 'B) Either / or', 'C) Whether / or', 'D) Not only / but', 'E) Both / and'],
+        correctIndex: 3,
+        explanation: 'Duzenlii fiziksel aktivite SADECE kardiyovaskuler hastalik riskini azaltmakla KALMAZ, AYNI ZAMANDA ruh sagligi sonuclarini da iyilestirir. Not only ... but (also) paralel yapi.',
+        stepByStep: '1. Iki olumlu bilgiyi baglayan bir yapi gerekiyor.\n'
+            '2. "Not only ... but (also)" = Sadece ... degil, ayni zamanda ... de.\n'
+            '3. Devrik yapi: "Not only DOES regular activity reduce..." -> yardimci fiil one geliyor.\n'
+            '4. "but it also improves" -> ikinci olumlu bilgi ekleniyor.\n'
+            '5. Sonuc: D sikki.',
+      ),
+      ExampleQuestion(
+        question: 'The doctor recommended strict bed rest ---- the patient aggravate the spinal injury by moving around.',
+        options: ['A) so that', 'B) in case', 'C) lest', 'D) whereas', 'E) even if'],
+        correctIndex: 2,
+        explanation: 'Doktor siki yatak istirahati tavsiye etti, hasta hareket ederek omurga yaralanmasini KOTULESTIRMESIN DIYE (lest). "Lest" = -mesin diye anlamina gelir ve olumsuz bir amac bildirir.',
+        stepByStep: '1. Cumlenin anlami: Doktor yatak istirahati tavsiye etti -> NEDEN?\n'
+            '2. Hasta hareket ederse yaralanma kotuleSEBILIR -> ONLEM/OLUMSUZ AMAC.\n'
+            '3. Lest = -mesin diye (Olumsuz amac bildirir). DOGRU.\n'
+            '4. Lest arkasindaki cumlede "should" veya duz fiil gelir, "not" GELMEZ.\n'
+            '5. So that = -sin diye (olumlu amac), In case = ihtimaline karsi. Nuana uymuyor.\n'
+            '6. Sonuc: C sikki.',
+      ),
+    ],
+  ),
+
+  // ═══════════════════════════════════════════════════════
   // 1. GRAMER & KELİME BİLGİSİ
   // ═══════════════════════════════════════════════════════
   QuestionType(

@@ -56,6 +56,7 @@ final List<VocabCategory> vocabCategories = [
   const VocabCategory(name: 'Oxford A2 Seviyesi', icon: '🟡', color: '#EAB308', description: 'Oxford 3000 - A2 Kelimeler'),
   const VocabCategory(name: 'Oxford B1 Seviyesi', icon: '📘', color: '#3B82F6', description: 'Oxford 3000 - B1 Akademik Kelimeler'),
   const VocabCategory(name: 'Oxford B2 Seviyesi', icon: '📙', color: '#F97316', description: 'Oxford 3000 - B2 İleri Seviye Kelimeler'),
+  const VocabCategory(name: 'Önemli Bağlaçlar', icon: '🔗', color: '#F43F5E', description: 'YÖKDİL ve YDS\'de sıkça karşılaşılan önemli bağlaçlar'),
 ];
 
 final List<VocabWord> vocabWords = [
@@ -681,5 +682,600 @@ final List<VocabWord> vocabWords = [
     category: 'Oxford B2 Seviyesi',
     example: 'Lifestyle modifications, such as diet and exercise, can prevent diabetes.',
     synonyms: ['change', 'alteration', 'adjustment'],
+  ),
+
+
+  // === ÖNEMLİ BAĞLAÇLAR ===
+  const VocabWord(
+    english: 'although', turkish: '-e rağmen',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "although" arkasından tam cümle (Özne + Yüklem) alır.', synonyms: ['despite the fact that', 'even though', 'though'], 
+  ),
+  const VocabWord(
+    english: 'though', turkish: '-e rağmen',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "though" arkasından tam cümle (Özne + Yüklem) alır.', synonyms: ['although', 'despite the fact that', 'even though'], 
+  ),
+  const VocabWord(
+    english: 'after', turkish: '-den sonra',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['once'], 
+  ),
+  const VocabWord(
+    english: 'afterwards', turkish: 'ardından',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'as', turkish: '-dığı için, çünkü, -dıkça, iken, gibi',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Neden bildirir ve arkasından tam cümle (S + V + O) gelir.', synonyms: ['because', 'since'], 
+  ),
+  const VocabWord(
+    english: 'because', turkish: '-dığı için, çünkü',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Neden bildirir ve arkasından tam cümle (S + V + O) gelir.', synonyms: ['as', 'since'], 
+  ),
+  const VocabWord(
+    english: 'before', turkish: '-den önce',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'but', turkish: 'fakat, ama, ancak',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['however', 'yet'], 
+  ),
+  const VocabWord(
+    english: 'except', turkish: 'hariç',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'if', turkish: 'eğer, -se/sa',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'meanwhile', turkish: 'bu arada',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['by the way'], 
+  ),
+  const VocabWord(
+    english: 'moreover', turkish: 'dahası, ayrıca',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Ek bilgi verir, genelde iki nokta üst üste veya noktadan sonra büyük harfle başlar.', synonyms: ['additionally', 'also', 'furthermore', 'in addition', 'what is more'], 
+  ),
+  const VocabWord(
+    english: 'nor', turkish: 'ne, ne de',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'once', turkish: '-den sonra',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['after'], 
+  ),
+  const VocabWord(
+    english: 'or', turkish: 'ya da, aksi takdirde',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['or else', 'otherwise'], 
+  ),
+  const VocabWord(
+    english: 'provided', turkish: 'koşuluyla',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'providing', turkish: 'koşuluyla',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['on condition that', 'provided'], 
+  ),
+  const VocabWord(
+    english: 'since', turkish: '-dığı için, çünkü, -den beri',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Neden bildirir ve arkasından tam cümle (S + V + O) gelir.', synonyms: ['as', 'because'], 
+  ),
+  const VocabWord(
+    english: 'so', turkish: 'bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['consequently', 'hence', 'that is why', 'therefore'], 
+  ),
+  const VocabWord(
+    english: 'unless', turkish: '-mezse, -mazsa',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "If not" anlamındadır. Kendisinden sonraki cümle yapıca olumlu, anlamca olumsuzdur.', 
+  ),
+  const VocabWord(
+    english: 'until', turkish: '-e kadar',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'whatsoever', turkish: 'hiç mi hiç',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'when', turkish: '-dığı zaman',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'whereas', turkish: '-e rağmen, oysa',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['while'], 
+  ),
+  const VocabWord(
+    english: 'while', turkish: '-e rağmen, -iken, oysa',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['whereas'], 
+  ),
+  const VocabWord(
+    english: 'yet', turkish: 'fakat, ama, ancak',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['but', 'however'], 
+  ),
+  const VocabWord(
+    english: 'despite the fact that', turkish: '-e rağmen',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "Despite" normalde isim alırken, "the fact that" eklendiğinde tam cümle alır.', synonyms: ['although', 'even though', 'though'], 
+  ),
+  const VocabWord(
+    english: 'nonetheless', turkish: 'yine de, buna rağmen',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['nevertheless', 'still'], 
+  ),
+  const VocabWord(
+    english: 'however', turkish: 'fakat, ancak',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['but', 'yet'], 
+  ),
+  const VocabWord(
+    english: 'in contrast', turkish: 'aksine',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['on the contrary'], 
+  ),
+  const VocabWord(
+    english: 'on the contrary', turkish: 'aksine',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'nevertheless', turkish: 'yine de',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['nonetheless', 'still'], 
+  ),
+  const VocabWord(
+    english: 'still', turkish: 'yine de',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['nevertheless', 'nonetheless'], 
+  ),
+  const VocabWord(
+    english: 'conversely', turkish: 'aksine',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'on the other hand', turkish: 'öte yandan',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'thus', turkish: 'bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['accordingly', 'as a result', 'consequently', 'hence', 'so', 'therefore'], 
+  ),
+  const VocabWord(
+    english: 'furthermore', turkish: 'ayrıca',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Ek bilgi verir, genelde iki nokta üst üste veya noktadan sonra büyük harfle başlar.', synonyms: ['additionally', 'also', 'in addition', 'moreover', 'what is more'], 
+  ),
+  const VocabWord(
+    english: 'what is more', turkish: 'ayrıca',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['additionally', 'also', 'furthermore', 'in addition', 'moreover'], 
+  ),
+  const VocabWord(
+    english: 'hence', turkish: 'bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['consequently', 'so', 'that is why', 'therefore'], 
+  ),
+  const VocabWord(
+    english: 'therefore', turkish: 'bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['consequently', 'hence', 'so', 'that is why'], 
+  ),
+  const VocabWord(
+    english: 'consequently', turkish: 'bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['hence', 'so', 'that is why', 'therefore'], 
+  ),
+  const VocabWord(
+    english: 'as a result', turkish: 'sonuç olarak',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['as a consequence'], 
+  ),
+  const VocabWord(
+    english: 'as a consequence', turkish: 'sonuç olarak',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['as a result'], 
+  ),
+  const VocabWord(
+    english: 'on condition that', turkish: 'koşuluyla',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['provided', 'providing'], 
+  ),
+  const VocabWord(
+    english: 'as long as', turkish: '-dığı sürece',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['so long as'], 
+  ),
+  const VocabWord(
+    english: 'so long as', turkish: '-dığı sürece',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['as long as'], 
+  ),
+  const VocabWord(
+    english: 'only if', turkish: 'koşuluyla',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'suppose that', turkish: 'varsay ki',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'otherwise', turkish: 'aksi takdirde',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['or', 'or else'], 
+  ),
+  const VocabWord(
+    english: 'or else', turkish: 'aksi takdirde',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['or', 'otherwise'], 
+  ),
+  const VocabWord(
+    english: 'as soon as', turkish: 'yapar yapmaz',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'by the time', turkish: '-dığı zaman, -dığı zamana kadar',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Zaman uyumu ister. By the time + Past Simple -> Past Perfect veya Present -> Future Perfect.', 
+  ),
+  const VocabWord(
+    english: 'besides', turkish: '-e ilaveten, ayrıca',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['as well as', 'in addition to'], 
+  ),
+  const VocabWord(
+    english: 'just as', turkish: 'tıpkı, tam o anda',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'as far as', turkish: 'kadar (-e kadar)',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['so far as'], 
+  ),
+  const VocabWord(
+    english: 'so that', turkish: '-sın diye',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Kendisinden sonra genellikle "can, could, may, might, will, would" modalları gelir.', 
+  ),
+  const VocabWord(
+    english: 'as if', turkish: '-mış gibi',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "Mış gibi" anlamındadır. Genellikle gerçek dışı durumlarda past tense ile kullanılır.', synonyms: ['as though'], 
+  ),
+  const VocabWord(
+    english: 'as though', turkish: '-mış gibi',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "Mış gibi" anlamındadır. Genellikle gerçek dışı durumlarda past tense ile kullanılır.', synonyms: ['as if'], 
+  ),
+  const VocabWord(
+    english: 'now that', turkish: '-dığı için',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'as such', turkish: 'bu bağlamda',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'no matter', turkish: 'ne olursa olsun',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'if only', turkish: 'keşke',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even when', turkish: '-dığı zaman bile',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even after', turkish: '-den sonra bile',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even before', turkish: '-den önce bile',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even so', turkish: 'öyle olsa bile',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even if', turkish: '-se bile',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'in order that', turkish: '-sın diye',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Kendisinden sonra genellikle "can, could, may, might, will, would" modalları gelir.', 
+  ),
+  const VocabWord(
+    english: 'by the way', turkish: 'bu arada',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['in the meantime', 'meanwhile'], 
+  ),
+  const VocabWord(
+    english: 'that is', turkish: 'yani',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'accordingly', turkish: 'bu doğrultuda, buna göre',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'lest', turkish: '-mesin diye',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Olumsuz anlam taşır (-mesin diye). Kendisinden sonra genellikle "should" kullanılır ve cümle yapıca olumludur.', 
+  ),
+  const VocabWord(
+    english: 'by all means', turkish: 'elbette, kuşkusuz',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'by no means', turkish: 'hiçbir şekilde',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'also', turkish: 'ayrıca, -de, -da',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['as well as', 'besides', 'in addition to'], 
+  ),
+  const VocabWord(
+    english: 'in that', turkish: 'çünkü',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'in the meantime', turkish: 'bu arada, bu süre içinde',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['by the way', 'meanwhile'], 
+  ),
+  const VocabWord(
+    english: 'as a matter of fact', turkish: 'aslında, gerçekte',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['actually', 'in fact', 'in reality'], 
+  ),
+  const VocabWord(
+    english: 'that is why', turkish: 'bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['consequently', 'hence', 'so', 'therefore'], 
+  ),
+  const VocabWord(
+    english: 'thereby', turkish: 'böylece, bu nedenle',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'and so', turkish: 've böylece, bu nedenle',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'which is why', turkish: 'işte bu yüzden',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['consequently', 'hence', 'so', 'that is why', 'therefore'], 
+  ),
+  const VocabWord(
+    english: 'indeed', turkish: 'gerçekten',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'in fact', turkish: 'aslında, gerçekten',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['actually'], 
+  ),
+  const VocabWord(
+    english: 'then', turkish: 'o zaman, öyleyse, ondan sonra',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'in addition', turkish: 'ayrıca',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Ek bilgi verir, genelde iki nokta üst üste veya noktadan sonra büyük harfle başlar.', synonyms: ['furthermore', 'moreover', 'what is more'], 
+  ),
+  const VocabWord(
+    english: 'similarly', turkish: 'benzer şekilde',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'actually', turkish: 'aslında, gerçekten',
+    category: 'Önemli Bağlaçlar',
+    synonyms: ['in fact'], 
+  ),
+  const VocabWord(
+    english: 'likewise', turkish: 'aynı biçimde, benzer şekilde',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even then', turkish: 'o zaman bile',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'on the grounds that', turkish: '-e dayanarak',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'additionally', turkish: 'ayrıca',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Ek bilgi verir, genelde iki nokta üst üste veya noktadan sonra büyük harfle başlar.', 
+  ),
+  const VocabWord(
+    english: 'instead', turkish: 'yerine',
+    category: 'Önemli Bağlaçlar',
+    
+  ),
+  const VocabWord(
+    english: 'even though', turkish: '-e rağmen',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "even though" arkasından tam cümle (Özne + Yüklem) alır.', synonyms: ['although', 'despite the fact that', 'though'], 
+  ),
+
+  // === EKSTRA İLERİ SEVİYE BAĞLAÇLAR (YÖKDİL SAĞLIK) ===
+  const VocabWord(
+    english: 'not only ... but also', turkish: 'sadece ... değil, aynı zamanda',
+    category: 'Önemli Bağlaçlar',
+  ),
+  const VocabWord(
+    english: 'both ... and', turkish: 'hem ... hem de',
+    category: 'Önemli Bağlaçlar',
+  ),
+  const VocabWord(
+    english: 'either ... or', turkish: 'ya ... ya da',
+    category: 'Önemli Bağlaçlar',
+  ),
+  const VocabWord(
+    english: 'neither ... nor', turkish: 'ne ... ne de',
+    category: 'Önemli Bağlaçlar',
+  ),
+  const VocabWord(
+    english: 'whether ... or', turkish: 'ister ... ister / -ip -mediği',
+    category: 'Önemli Bağlaçlar',
+  ),
+  const VocabWord(
+    english: 'in case', turkish: 'durumunda (ne olur ne olmaz diye)',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Arkasından tam cümle alır. Cümle present veya past olabilir ama "will/would" genellikle almaz.', synonyms: ['just in case'], 
+  ),
+  const VocabWord(
+    english: 'in case of', turkish: 'durumunda',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Arkasından isim (noun) veya V-ing alır. Cümle almaz.', synonyms: ['in the event of'], 
+  ),
+  const VocabWord(
+    english: 'given that', turkish: '-diği için / göz önüne alındığında',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Sebep bildirir, tam cümle alır.', synonyms: ['seeing that', 'considering that'], 
+  ),
+  const VocabWord(
+    english: 'seeing that', turkish: '-dığı için / madem ki',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Tam cümle alır.', synonyms: ['given that', 'since', 'as'], 
+  ),
+  const VocabWord(
+    english: 'in view of', turkish: 'göz önüne alındığında / -den dolayı',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim veya isim öbeği alır.', synonyms: ['considering'], 
+  ),
+  const VocabWord(
+    english: 'with a view to', turkish: '-mek amacıyla',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: "to" olmasına rağmen arkasından V-ing (isim-fiil) alır. Örn: with a view to improving...', synonyms: ['with the aim of'], 
+  ),
+  const VocabWord(
+    english: 'for fear that', turkish: 'korkusuyla',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Tam cümle alır. Olumsuz anlam taşır.', synonyms: ['lest'], 
+  ),
+  const VocabWord(
+    english: 'no sooner ... than', turkish: 'yapar yapmaz',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Cümle başına gelirse devrik (inverted) yapı gerektirir. Örn: No sooner had the surgery started than...', synonyms: ['hardly ... when', 'scarcely ... when'], 
+  ),
+  const VocabWord(
+    english: 'hardly ... when', turkish: 'tam ... olmuştu ki ... oldu (yapar yapmaz)',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: Geçmiş zaman uyumu ve devrik yapı (inversion) yaygındır.', synonyms: ['no sooner ... than', 'scarcely ... when'], 
+  ),
+  const VocabWord(
+    english: 'regardless of', turkish: '-e bakılmaksızın',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun), V-ing veya "wh-" soru kelimesi (how, what, vb.) ile başlayan noun clause alır.', synonyms: ['irrespective of'], 
+  ),
+  const VocabWord(
+    english: 'irrespective of', turkish: '-e bakılmaksızın',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim veya "wh-" clause alır.', synonyms: ['regardless of'], 
+  ),
+  const VocabWord(
+    english: 'in terms of', turkish: 'açısından, bakımından',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) veya V-ing alır.', synonyms: ['as regards', 'with regard to'], 
+  ),
+  const VocabWord(
+    english: 'apart from', turkish: '-den başka, haricinde',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) veya V-ing alır.', synonyms: ['besides', 'except for'], 
+  ),
+  const VocabWord(
+    english: 'in addition to', turkish: '-e ilaveten',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) veya V-ing alır.', synonyms: ['besides', 'along with'], 
+  ),
+  const VocabWord(
+    english: 'instead of', turkish: '-in yerine',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) veya V-ing alır.', synonyms: ['in place of'], 
+  ),
+  const VocabWord(
+    english: 'rather than', turkish: '-den ziyade',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim, V-ing, veya fiilin yalın hali (V1) alabilir. Genellikle paralel yapı gerektirir.', 
+  ),
+  const VocabWord(
+    english: 'as well as', turkish: 'yanı sıra, ile birlikte',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim veya V-ing alır.', synonyms: ['in addition to', 'besides'], 
+  ),
+  const VocabWord(
+    english: 'thanks to', turkish: 'sayesinde',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) alır. Genellikle olumlu durumlar için kullanılır.', synonyms: ['because of', 'due to', 'owing to'], 
+  ),
+  const VocabWord(
+    english: 'owing to', turkish: '-den dolayı, sebebiyle',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) alır.', synonyms: ['due to', 'because of', 'thanks to'], 
+  ),
+  const VocabWord(
+    english: 'as opposed to', turkish: '-in aksine',
+    category: 'Önemli Bağlaçlar',
+    example: 'Gramer: İsim (noun) veya V-ing alır.', synonyms: ['unlike', 'in contrast to'], 
   ),
 ];
