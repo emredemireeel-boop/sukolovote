@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../data/vocab_pool_data.dart';
 import '../services/oxford_service.dart';
+import '../services/health_service.dart';
 
 class VocabPoolScreen extends StatefulWidget {
   final String? initialCategory;
@@ -40,6 +41,19 @@ class _VocabPoolScreenState extends State<VocabPoolScreen> {
     if (oxfordWords.isNotEmpty) {
       words.removeWhere((w) => w.category.contains('Oxford'));
       words.addAll(oxfordWords);
+    }
+
+    // Ekstra sağlık kelimelerini çekiyoruz
+    final healthTerms = await HealthService.fetchHealthTerms();
+    if (healthTerms.isNotEmpty) {
+      for (var term in healthTerms) {
+        words.add(VocabWord(
+          english: term.english,
+          turkish: term.turkish,
+          category: term.category,
+          example: term.example,
+        ));
+      }
     }
     
     if (mounted) {
@@ -324,6 +338,30 @@ class _VocabPoolScreenState extends State<VocabPoolScreen> {
             ),
           ],
 
+          // Antonyms
+          if (word.antonyms != null && word.antonyms!.isNotEmpty) ...[
+            const SizedBox(height: 6),
+            Wrap(
+              spacing: 6,
+              runSpacing: 4,
+              children: word.antonyms!.map((a) => Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryPink.withOpacity(0.08),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  '≠ $a',
+                  style: GoogleFonts.inter(
+                    fontSize: 11,
+                    color: AppTheme.primaryPink,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              )).toList(),
+            ),
+          ],
+
           // Collocations
           if (word.collocations != null && word.collocations!.isNotEmpty) ...[
             const SizedBox(height: 6),
@@ -494,6 +532,25 @@ class _VocabPoolScreenState extends State<VocabPoolScreen> {
                             child: Text(
                               '≈ $s',
                               style: GoogleFonts.inter(fontSize: 12, color: AppTheme.textSecondary),
+                            ),
+                          )).toList(),
+                        ),
+                      ],
+                      if (word.antonyms != null && word.antonyms!.isNotEmpty) ...[
+                        const SizedBox(height: 12),
+                        Wrap(
+                          spacing: 6,
+                          runSpacing: 6,
+                          alignment: WrapAlignment.center,
+                          children: word.antonyms!.map((a) => Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.06),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              '≠ $a',
+                              style: GoogleFonts.inter(fontSize: 12, color: AppTheme.primaryPink),
                             ),
                           )).toList(),
                         ),

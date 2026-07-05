@@ -7,6 +7,7 @@ class VocabWord {
   final String category;
   final String? example;
   final List<String>? synonyms;
+  final List<String>? antonyms;
   final List<String>? collocations;
 
   const VocabWord({
@@ -15,6 +16,7 @@ class VocabWord {
     required this.category,
     this.example,
     this.synonyms,
+    this.antonyms,
     this.collocations,
   });
 
@@ -25,6 +27,7 @@ class VocabWord {
       category: json['category'] as String,
       example: json['example'] as String?,
       synonyms: (json['synonyms'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      antonyms: (json['antonyms'] as List<dynamic>?)?.map((e) => e as String).toList(),
       collocations: (json['collocations'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
   }
@@ -56,6 +59,7 @@ final List<VocabCategory> vocabCategories = [
   const VocabCategory(name: 'Oxford A2 Seviyesi', icon: '🟡', color: '#EAB308', description: 'Oxford 3000 - A2 Kelimeler'),
   const VocabCategory(name: 'Oxford B1 Seviyesi', icon: '📘', color: '#3B82F6', description: 'Oxford 3000 - B1 Akademik Kelimeler'),
   const VocabCategory(name: 'Oxford B2 Seviyesi', icon: '📙', color: '#F97316', description: 'Oxford 3000 - B2 İleri Seviye Kelimeler'),
+  const VocabCategory(name: 'C1 İleri Seviye', icon: '💎', color: '#9333EA', description: 'İleri düzey kelimeler, eş ve zıt anlamlılar'),
   const VocabCategory(name: 'Önemli Bağlaçlar', icon: '🔗', color: '#F43F5E', description: 'YÖKDİL ve YDS\'de sıkça karşılaşılan önemli bağlaçlar'),
 ];
 
@@ -1277,5 +1281,307 @@ final List<VocabWord> vocabWords = [
     english: 'as opposed to', turkish: '-in aksine',
     category: 'Önemli Bağlaçlar',
     example: 'Gramer: İsim (noun) veya V-ing alır.', synonyms: ['unlike', 'in contrast to'], 
+  ),
+  
+  // === C1 İLERİ SEVİYE ===
+  const VocabWord(
+    english: 'ambiguous', turkish: 'belirsiz, muğlak', category: 'C1 İleri Seviye',
+    example: 'The symptoms were too ambiguous to make an accurate diagnosis.',
+    synonyms: ['vague', 'obscure', 'unclear'], antonyms: ['clear', 'explicit', 'definite'],
+  ),
+  const VocabWord(
+    english: 'alleviate', turkish: 'hafifletmek, dindirmek', category: 'C1 İleri Seviye',
+    example: 'The new drug helps to alleviate the pain quickly.',
+    synonyms: ['relieve', 'mitigate', 'ease'], antonyms: ['aggravate', 'exacerbate', 'worsen'],
+  ),
+  const VocabWord(
+    english: 'deteriorate', turkish: 'kötüleşmek', category: 'C1 İleri Seviye',
+    example: 'The patient\'s condition began to deteriorate rapidly.',
+    synonyms: ['worsen', 'decline', 'degenerate'], antonyms: ['improve', 'ameliorate', 'recover'],
+  ),
+  const VocabWord(
+    english: 'susceptible', turkish: 'savunmasız, hassas', category: 'C1 İleri Seviye',
+    example: 'Older adults are highly susceptible to this infection.',
+    synonyms: ['vulnerable', 'prone', 'sensitive'], antonyms: ['resistant', 'immune'],
+  ),
+  const VocabWord(
+    english: 'eradicate', turkish: 'kökünü kazımak, yok etmek', category: 'C1 İleri Seviye',
+    example: 'Global efforts were successful in eradicating smallpox.',
+    synonyms: ['eliminate', 'wipe out', 'destroy'], antonyms: ['establish', 'preserve', 'create'],
+  ),
+  const VocabWord(
+    english: 'fluctuate', turkish: 'dalgalanmak, değişmek', category: 'C1 İleri Seviye',
+    example: 'His blood pressure fluctuated during the surgery.',
+    synonyms: ['vary', 'oscillate', 'change'], antonyms: ['stabilize', 'remain constant'],
+  ),
+  const VocabWord(
+    english: 'prevalent', turkish: 'yaygın', category: 'C1 İleri Seviye',
+    example: 'Obesity has become increasingly prevalent in modern societies.',
+    synonyms: ['widespread', 'common', 'frequent'], antonyms: ['rare', 'uncommon', 'scarce'],
+  ),
+  const VocabWord(
+    english: 'detrimental', turkish: 'zararlı', category: 'C1 İleri Seviye',
+    example: 'Smoking has a detrimental effect on respiratory health.',
+    synonyms: ['harmful', 'damaging', 'adverse'], antonyms: ['beneficial', 'advantageous', 'helpful'],
+  ),
+  const VocabWord(
+    english: 'plausible', turkish: 'makul, akla yatkın', category: 'C1 İleri Seviye',
+    example: 'The researcher presented a plausible theory for the origin of the disease.',
+    synonyms: ['reasonable', 'credible', 'believable'], antonyms: ['unlikely', 'implausible', 'doubtful'],
+  ),
+  const VocabWord(
+    english: 'proliferate', turkish: 'hızla çoğalmak, artmak', category: 'C1 İleri Seviye',
+    example: 'Cancer cells proliferate rapidly if left untreated.',
+    synonyms: ['multiply', 'mushroom', 'expand'], antonyms: ['decrease', 'dwindle', 'shrink'],
+  ),
+  const VocabWord(
+    english: 'impediment', turkish: 'engel, ayak bağı', category: 'C1 İleri Seviye',
+    example: 'A lack of funding is a major impediment to scientific research.',
+    synonyms: ['obstacle', 'barrier', 'hindrance'], antonyms: ['assistance', 'advantage', 'help'],
+  ),
+  const VocabWord(
+    english: 'unprecedented', turkish: 'eşi görülmemiş', category: 'C1 İleri Seviye',
+    example: 'The pandemic spread at an unprecedented rate.',
+    synonyms: ['unparalleled', 'exceptional', 'extraordinary'], antonyms: ['normal', 'customary', 'usual'],
+  ),
+  const VocabWord(
+    english: 'inevitable', turkish: 'kaçınılmaz', category: 'C1 İleri Seviye',
+    example: 'Some degree of memory loss is an inevitable part of aging.',
+    synonyms: ['unavoidable', 'inescapable', 'certain'], antonyms: ['avoidable', 'preventable', 'uncertain'],
+  ),
+  const VocabWord(
+    english: 'discrepancy', turkish: 'çelişki, farklılık', category: 'C1 İleri Seviye',
+    example: 'There was a significant discrepancy between the two laboratory results.',
+    synonyms: ['difference', 'inconsistency', 'variance'], antonyms: ['similarity', 'consistency', 'agreement'],
+  ),
+  const VocabWord(
+    english: 'exacerbate', turkish: 'şiddetlendirmek, kötüleştirmek', category: 'C1 İleri Seviye',
+    example: 'Stress can exacerbate the symptoms of autoimmune diseases.',
+    synonyms: ['aggravate', 'worsen', 'intensify'], antonyms: ['alleviate', 'mitigate', 'ease'],
+  ),
+  const VocabWord(
+    english: 'scrutinize', turkish: 'dikkatle incelemek', category: 'C1 İleri Seviye',
+    example: 'The medical board carefully scrutinized the clinical trial data.',
+    synonyms: ['examine', 'inspect', 'analyze'], antonyms: ['glance', 'ignore', 'neglect'],
+  ),
+  const VocabWord(
+    english: 'pervasive', turkish: 'yaygın, nüfuz eden', category: 'C1 İleri Seviye',
+    example: 'The pervasive nature of the virus made it difficult to contain.',
+    synonyms: ['ubiquitous', 'widespread', 'omnipresent'], antonyms: ['limited', 'rare', 'localized'],
+  ),
+  const VocabWord(
+    english: 'elicit', turkish: 'ortaya çıkarmak, elde etmek', category: 'C1 İleri Seviye',
+    example: 'The therapy elicited a positive response from the patient.',
+    synonyms: ['extract', 'obtain', 'bring out'], antonyms: ['suppress', 'hide', 'conceal'],
+  ),
+  const VocabWord(
+    english: 'intricate', turkish: 'karmaşık, çetrefilli', category: 'C1 İleri Seviye',
+    example: 'The human brain is a highly intricate network of neurons.',
+    synonyms: ['complex', 'complicated', 'elaborate'], antonyms: ['simple', 'straightforward', 'basic'],
+  ),
+  const VocabWord(
+    english: 'obsolete', turkish: 'kullanımdan kalkmış, eskimiş', category: 'C1 İleri Seviye',
+    example: 'Some surgical techniques have become obsolete due to robotic advancements.',
+    synonyms: ['outdated', 'antiquated', 'old-fashioned'], antonyms: ['modern', 'contemporary', 'current'],
+  ),
+  const VocabWord(
+    english: 'sedentary', turkish: 'hareketsiz, oturarak', category: 'C1 İleri Seviye',
+    example: 'A sedentary lifestyle contributes to cardiovascular diseases.',
+    synonyms: ['inactive', 'desk-bound'], antonyms: ['active', 'mobile', 'energetic'],
+  ),
+  const VocabWord(
+    english: 'feasible', turkish: 'uygulanabilir, makul', category: 'C1 İleri Seviye',
+    example: 'It is not feasible to screen the entire population for this rare gene.',
+    synonyms: ['viable', 'possible', 'practical'], antonyms: ['impossible', 'impractical', 'unachievable'],
+  ),
+  const VocabWord(
+    english: 'conducive', turkish: 'olanak sağlayan, teşvik eden', category: 'C1 İleri Seviye',
+    example: 'A calm environment is conducive to patient recovery.',
+    synonyms: ['favorable', 'beneficial', 'helpful'], antonyms: ['unfavorable', 'detrimental', 'hindering'],
+  ),
+  const VocabWord(
+    english: 'lethal', turkish: 'ölümcül', category: 'C1 İleri Seviye',
+    example: 'High doses of this medication can be lethal.',
+    synonyms: ['fatal', 'deadly', 'mortal'], antonyms: ['harmless', 'safe', 'benign'],
+  ),
+  const VocabWord(
+    english: 'paramount', turkish: 'son derece önemli', category: 'C1 İleri Seviye',
+    example: 'Patient safety is of paramount importance in every hospital.',
+    synonyms: ['supreme', 'chief', 'crucial'], antonyms: ['minor', 'trivial', 'unimportant'],
+  ),
+  const VocabWord(
+    english: 'resilient', turkish: 'dirençli, çabuk iyileşen', category: 'C1 İleri Seviye',
+    example: 'Children are surprisingly resilient when recovering from surgery.',
+    synonyms: ['tough', 'hardy', 'flexible'], antonyms: ['fragile', 'vulnerable', 'weak'],
+  ),
+  const VocabWord(
+    english: 'validate', turkish: 'doğrulamak, geçerli kılmak', category: 'C1 İleri Seviye',
+    example: 'Further studies are required to validate these initial findings.',
+    synonyms: ['confirm', 'verify', 'prove'], antonyms: ['reject', 'deny', 'disprove'],
+  ),
+  const VocabWord(
+    english: 'adhere', turkish: 'bağlı kalmak, yapışmak', category: 'C1 İleri Seviye',
+    example: 'Patients must adhere to their prescribed medication schedules.',
+    synonyms: ['stick', 'conform', 'comply'], antonyms: ['disregard', 'detach', 'ignore'],
+  ),
+  const VocabWord(
+    english: 'profound', turkish: 'derin, çok büyük', category: 'C1 İleri Seviye',
+    example: 'The discovery had a profound impact on medical science.',
+    synonyms: ['deep', 'intense', 'significant'], antonyms: ['superficial', 'mild', 'trivial'],
+  ),
+  const VocabWord(
+    english: 'vigorously', turkish: 'güçlü bir şekilde, enerjikçe', category: 'C1 İleri Seviye',
+    example: 'The body reacts vigorously to the introduction of foreign antigens.',
+    synonyms: ['energetically', 'forcefully', 'strongly'], antonyms: ['weakly', 'sluggishly', 'feebly'],
+  ),
+  const VocabWord(
+    english: 'prone', turkish: 'yatkın, eğilimli', category: 'C1 İleri Seviye',
+    example: 'Individuals with a compromised immune system are prone to infections.',
+    synonyms: ['susceptible', 'inclined', 'vulnerable'], antonyms: ['resistant', 'immune'],
+  ),
+  const VocabWord(
+    english: 'augment', turkish: 'artırmak, çoğaltmak', category: 'C1 İleri Seviye',
+    example: 'The doctor prescribed a supplement to augment the patient\'s iron levels.',
+    synonyms: ['increase', 'enhance', 'boost'], antonyms: ['decrease', 'diminish', 'reduce'],
+  ),
+  const VocabWord(
+    english: 'endorse', turkish: 'onaylamak, desteklemek', category: 'C1 İleri Seviye',
+    example: 'The medical association does not endorse the use of this unproven therapy.',
+    synonyms: ['support', 'approve', 'back'], antonyms: ['oppose', 'reject', 'disapprove'],
+  ),
+  const VocabWord(
+    english: 'notorious', turkish: 'kötü şöhretli, adı çıkmış', category: 'C1 İleri Seviye',
+    example: 'The virus is notorious for its rapid mutation rate.',
+    synonyms: ['infamous', 'well-known', 'disreputable'], antonyms: ['reputable', 'esteemed', 'respected'],
+  ),
+  const VocabWord(
+    english: 'obligatory', turkish: 'zorunlu, mecburi', category: 'C1 İleri Seviye',
+    example: 'It is obligatory for all healthcare staff to be vaccinated against Hepatitis B.',
+    synonyms: ['mandatory', 'compulsory', 'required'], antonyms: ['optional', 'voluntary'],
+  ),
+  const VocabWord(
+    english: 'prudent', turkish: 'sağduyulu, tedbirli', category: 'C1 İleri Seviye',
+    example: 'It would be prudent to run a few more tests before proceeding with surgery.',
+    synonyms: ['cautious', 'sensible', 'wise'], antonyms: ['reckless', 'careless', 'imprudent'],
+  ),
+  const VocabWord(
+    english: 'reluctant', turkish: 'isteksiz, gönülsüz', category: 'C1 İleri Seviye',
+    example: 'Many patients are reluctant to discuss their mental health issues.',
+    synonyms: ['unwilling', 'hesitant', 'disinclined'], antonyms: ['eager', 'willing', 'enthusiastic'],
+  ),
+  const VocabWord(
+    english: 'substantial', turkish: 'önemli, büyük ölçüde', category: 'C1 İleri Seviye',
+    example: 'There is a substantial difference between the two treatment methods.',
+    synonyms: ['significant', 'considerable', 'major'], antonyms: ['insignificant', 'minor', 'trivial'],
+  ),
+  const VocabWord(
+    english: 'tentative', turkish: 'geçici, kesin olmayan', category: 'C1 İleri Seviye',
+    example: 'The doctors reached a tentative diagnosis pending further blood work.',
+    synonyms: ['provisional', 'unconfirmed', 'preliminary'], antonyms: ['definite', 'final', 'conclusive'],
+  ),
+  const VocabWord(
+    english: 'vigorous', turkish: 'güçlü, enerjik, dinç', category: 'C1 İleri Seviye',
+    example: 'Vigorous exercise is not recommended immediately after recovering from a heart attack.',
+    synonyms: ['robust', 'dynamic', 'strenuous'], antonyms: ['weak', 'lethargic', 'feeble'],
+  ),
+  const VocabWord(
+    english: 'lucrative', turkish: 'kazançlı, karlı', category: 'C1 İleri Seviye',
+    example: 'Pharmaceutical research can be a highly lucrative industry.',
+    synonyms: ['profitable', 'rewarding', 'fruitful'], antonyms: ['unprofitable', 'loss-making'],
+  ),
+  const VocabWord(
+    english: 'rigorous', turkish: 'titiz, sıkı, zorlu', category: 'C1 İleri Seviye',
+    example: 'The new vaccine must undergo rigorous clinical trials before approval.',
+    synonyms: ['thorough', 'strict', 'stringent'], antonyms: ['careless', 'lenient', 'lax'],
+  ),
+  const VocabWord(
+    english: 'unanimous', turkish: 'oybirliğiyle, müttefik', category: 'C1 İleri Seviye',
+    example: 'The committee reached a unanimous decision to ban the hazardous chemical.',
+    synonyms: ['agreed', 'united', 'concerted'], antonyms: ['divided', 'split', 'discordant'],
+  ),
+  const VocabWord(
+    english: 'vulnerable', turkish: 'savunmasız, kırılgan', category: 'C1 İleri Seviye',
+    example: 'Premature infants are extremely vulnerable to respiratory infections.',
+    synonyms: ['susceptible', 'defenseless', 'exposed'], antonyms: ['protected', 'secure', 'invulnerable'],
+  ),
+  const VocabWord(
+    english: 'endemic', turkish: 'yöresel, belirli bir bölgede görülen', category: 'C1 İleri Seviye',
+    example: 'Malaria is endemic to many tropical regions of the world.',
+    synonyms: ['native', 'local', 'indigenous'], antonyms: ['pandemic', 'widespread', 'global'],
+  ),
+  const VocabWord(
+    english: 'hereditary', turkish: 'kalıtsal', category: 'C1 İleri Seviye',
+    example: 'Hemophilia is a hereditary disease that affects blood clotting.',
+    synonyms: ['genetic', 'inherited', 'inborn'], antonyms: ['acquired', 'non-genetic'],
+  ),
+  const VocabWord(
+    english: 'imminent', turkish: 'eli kulağında, yakın', category: 'C1 İleri Seviye',
+    example: 'The patient was in imminent danger of suffering cardiac arrest.',
+    synonyms: ['impending', 'approaching', 'looming'], antonyms: ['distant', 'remote'],
+  ),
+  const VocabWord(
+    english: 'latent', turkish: 'gizli, belirti göstermeyen', category: 'C1 İleri Seviye',
+    example: 'The virus can remain latent in the body for years before causing symptoms.',
+    synonyms: ['dormant', 'hidden', 'concealed'], antonyms: ['active', 'manifest', 'apparent'],
+  ),
+  const VocabWord(
+    english: 'malignant', turkish: 'kötü huylu', category: 'C1 İleri Seviye',
+    example: 'The biopsy revealed that the tumor was malignant.',
+    synonyms: ['cancerous', 'fatal', 'destructive'], antonyms: ['benign', 'harmless', 'non-cancerous'],
+  ),
+  const VocabWord(
+    english: 'palliative', turkish: 'hafifletici, geçici çözüm', category: 'C1 İleri Seviye',
+    example: 'Since the disease is incurable, the focus shifted to palliative care.',
+    synonyms: ['soothing', 'relieving', 'alleviative'], antonyms: ['curative', 'healing'],
+  ),
+  const VocabWord(
+    english: 'sedative', turkish: 'yatıştırıcı', category: 'C1 İleri Seviye',
+    example: 'The doctor administered a mild sedative to calm the anxious patient.',
+    synonyms: ['calming', 'relaxing', 'tranquilizer'], antonyms: ['stimulant', 'arousing'],
+  ),
+  const VocabWord(
+    english: 'suspend', turkish: 'askıya almak, durdurmak', category: 'C1 İleri Seviye',
+    example: 'The trial was suspended after several participants reported severe side effects.',
+    synonyms: ['halt', 'interrupt', 'postpone'], antonyms: ['continue', 'resume', 'proceed'],
+  ),
+  const VocabWord(
+    english: 'toxic', turkish: 'zehirli', category: 'C1 İleri Seviye',
+    example: 'Prolonged exposure to toxic chemicals can lead to chronic illnesses.',
+    synonyms: ['poisonous', 'harmful', 'lethal'], antonyms: ['non-toxic', 'safe', 'harmless'],
+  ),
+  const VocabWord(
+    english: 'ubiquitous', turkish: 'her yerde birden bulunan', category: 'C1 İleri Seviye',
+    example: 'Microorganisms are ubiquitous in our environment.',
+    synonyms: ['omnipresent', 'pervasive', 'universal'], antonyms: ['rare', 'scarce'],
+  ),
+  const VocabWord(
+    english: 'volatile', turkish: 'değişken, dengesiz', category: 'C1 İleri Seviye',
+    example: 'The patient\'s vital signs were highly volatile throughout the night.',
+    synonyms: ['unstable', 'unpredictable', 'fluctuating'], antonyms: ['stable', 'constant', 'steady'],
+  ),
+  const VocabWord(
+    english: 'widespread', turkish: 'yaygın', category: 'C1 İleri Seviye',
+    example: 'There is widespread concern about the new strain of the virus.',
+    synonyms: ['extensive', 'broad', 'prevalent'], antonyms: ['limited', 'confined', 'localized'],
+  ),
+  const VocabWord(
+    english: 'acute', turkish: 'akut, şiddetli', category: 'C1 İleri Seviye',
+    example: 'He was admitted to the emergency room with acute abdominal pain.',
+    synonyms: ['severe', 'sharp', 'intense'], antonyms: ['chronic', 'mild', 'dull'],
+  ),
+  const VocabWord(
+    english: 'chronic', turkish: 'kronik, sürekli', category: 'C1 İleri Seviye',
+    example: 'Asthma is a chronic respiratory condition that requires ongoing management.',
+    synonyms: ['persistent', 'long-lasting', 'continuous'], antonyms: ['acute', 'temporary', 'short-term'],
+  ),
+  const VocabWord(
+    english: 'empirical', turkish: 'deneysel, tecrübeye dayalı', category: 'C1 İleri Seviye',
+    example: 'There is strong empirical evidence linking diet to heart disease.',
+    synonyms: ['experimental', 'observed', 'practical'], antonyms: ['theoretical', 'hypothetical', 'speculative'],
+  ),
+  const VocabWord(
+    english: 'inherent', turkish: 'doğasında olan, ayrılmaz', category: 'C1 İleri Seviye',
+    example: 'Every surgical procedure carries inherent risks.',
+    synonyms: ['intrinsic', 'innate', 'inbuilt'], antonyms: ['acquired', 'external', 'alien'],
   ),
 ];

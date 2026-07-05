@@ -19,6 +19,18 @@ import 'reading_passages_screen.dart';
 import 'cikmis_fiiller_screen.dart';
 import '../data/articles_data.dart';
 import 'advice_list_screen.dart';
+import 'stats_screen.dart';
+import 'translation_workshop_screen.dart';
+import 'irrelevant_sentence_screen.dart';
+import 'prefix_suffix_screen.dart';
+import 'synonym_antonym_screen.dart';
+import 'spaced_repetition_screen.dart';
+import 'cloze_test_screen.dart';
+import 'word_games_screen.dart';
+import 'paragraph_analysis_screen.dart';
+import 'quests_screen.dart';
+import '../services/study_stats_service.dart';
+import 'score_calculator_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   int _currentIndex = 0;
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
+  int _currentStreak = 0;
 
   final List<String> motivationQuotes = [
     '"Başarı, hazırlığın fırsatla buluştuğu andır." – Seneca',
@@ -54,6 +67,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       CurvedAnimation(parent: _fadeController, curve: Curves.easeIn),
     );
     _fadeController.forward();
+    _loadStats();
+  }
+
+  Future<void> _loadStats() async {
+    await StudyStatsService.recordStudyToday();
+    final streak = await StudyStatsService.getStreak();
+    if (mounted) {
+      setState(() {
+        _currentStreak = streak;
+      });
+    }
   }
 
   Future<void> _checkAbsence() async {
@@ -108,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: _currentIndex == 0 ? _buildHomeTab() :
                _currentIndex == 1 ? const QuestionTypesScreen() :
                _currentIndex == 2 ? const QuizScreen() :
-               _currentIndex == 3 ? const HealthTermsScreen() :
+               _currentIndex == 3 ? const StatsScreen() :
                const StudyPlanScreen(),
       ),
       bottomNavigationBar: Container(
@@ -154,9 +178,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               label: 'Quiz',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.medical_information_outlined),
-              activeIcon: Icon(Icons.medical_information_rounded),
-              label: 'Terimler',
+              icon: Icon(Icons.bar_chart_rounded),
+              activeIcon: Icon(Icons.bar_chart_rounded),
+              label: 'İstatistik',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month_outlined),
@@ -182,6 +206,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               // Header
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,78 +242,126 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      Text(
-                        'Çalışma Rehberi 2026',
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          color: AppTheme.primaryCyan,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            'Hedefe doğru emin adımlarla!',
+                            style: GoogleFonts.inter(
+                              fontSize: 14,
+                              color: AppTheme.textSecondary,
+                            ),
+                          ),
+                          if (_currentStreak > 0) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF59E0B).withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Text('🔥', style: TextStyle(fontSize: 10)),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    '$_currentStreak Gün',
+                                    style: GoogleFonts.inter(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color(0xFFF59E0B),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      final messages = [
-                        'Kız Şüko, alev alev yanıyorsun! 🔥 Doktora seni bekler!',
-                        'Tıp çalışmıyor doktoraya çalışıyor! 👩‍⚕️',
-                        'YÖKDİL\'i parçalamaya hazır mıyız Şüko? 🚀',
-                        'Doktora yollarında sana başarılar! 🌟',
-                        'Hadi biraz kelime çalışalım, netler uçsun! 📈'
-                      ];
-                      final msg = messages[DateTime.now().millisecond % messages.length];
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            msg,
-                            style: GoogleFonts.inter(fontWeight: FontWeight.w600, color: Colors.white),
-                          ),
-                          backgroundColor: Colors.red.shade700,
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
-                          duration: const Duration(seconds: 3),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.1),
+                          shape: BoxShape.circle,
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.red.shade700,
-                        gradient: RadialGradient(
-                          colors: [Colors.orange.shade300, Colors.red.shade900],
-                          center: Alignment.topLeft,
-                          radius: 1.2,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const ScoreCalculatorScreen()),
+                            );
+                          },
+                          icon: const Icon(Icons.calculate_outlined, color: Colors.white),
+                          tooltip: 'Puan Hesapla',
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.redAccent.withOpacity(0.6),
-                            blurRadius: 15,
-                            spreadRadius: 2,
-                          ),
-                          BoxShadow(
-                            color: Colors.orangeAccent.withOpacity(0.3),
-                            blurRadius: 20,
-                            spreadRadius: 5,
-                          ),
-                        ],
                       ),
-                      child: Center(
-                        child: Text(
-                          'Ş',
-                          style: GoogleFonts.outfit(
-                            fontSize: 34,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                            shadows: const [
-                              Shadow(color: Colors.black45, blurRadius: 4, offset: Offset(2, 2)),
+                      const SizedBox(width: 12),
+                      GestureDetector(
+                        onTap: () {
+                          final messages = [
+                            'Kız Şüko, alev alev yanıyorsun! 🔥 Doktora seni bekler!',
+                            'Tıp çalışmıyor doktoraya çalışıyor! 👩‍⚕️',
+                            'YÖKDİL\'i parçalamaya hazır mıyız Şüko? 🚀',
+                            'Doktora yollarında sana başarılar! 🌟',
+                            'Hadi biraz kelime çalışalım, netler uçsun! 📈'
+                          ];
+                          final msg = messages[DateTime.now().millisecond % messages.length];
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                msg,
+                                style: GoogleFonts.inter(fontWeight: FontWeight.w600, color: Colors.white),
+                              ),
+                              backgroundColor: Colors.red.shade700,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                              duration: const Duration(seconds: 3),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 56,
+                          height: 56,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.red.shade700,
+                            gradient: RadialGradient(
+                              colors: [Colors.orange.shade300, Colors.red.shade900],
+                              center: Alignment.topLeft,
+                              radius: 1.2,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.redAccent.withOpacity(0.6),
+                                blurRadius: 15,
+                                spreadRadius: 2,
+                              ),
+                              BoxShadow(
+                                color: Colors.orangeAccent.withOpacity(0.3),
+                                blurRadius: 20,
+                                spreadRadius: 5,
+                              ),
                             ],
                           ),
+                          child: Center(
+                            child: Text(
+                              'Ş',
+                              style: GoogleFonts.outfit(
+                                fontSize: 34,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                                shadows: const [
+                                  Shadow(color: Colors.black45, blurRadius: 4, offset: Offset(2, 2)),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
@@ -1221,6 +1294,390 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ),
                 ),
                 const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF8B5CF6)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const TranslationWorkshopScreen()),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFFF43F5E).withOpacity(0.12),
+                  const Color(0xFFE11D48).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFFF43F5E).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF43F5E).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('🔀', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Çeviri Atölyesi',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'EN-TR & TR-EN Çeviri Soruları',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFFF43F5E),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFFF43F5E)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const IrrelevantSentenceScreen()),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFFF59E0B).withOpacity(0.12),
+                  const Color(0xFFD97706).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFFF59E0B).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF59E0B).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('🧩', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Anlamı Bozan Cümle',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Irrelevant Sentence Atölyesi',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFFF59E0B),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFFF59E0B)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SynonymAntonymScreen()),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFF6366F1).withOpacity(0.12),
+                  const Color(0xFF4F46E5).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFF6366F1).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF6366F1).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('🔤', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Eşanlamlı & Zıt Anlamlılar',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Sınavda sık çıkan ikililer',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFF818CF8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF818CF8)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const PrefixSuffixScreen()),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFF14B8A6).withOpacity(0.12),
+                  const Color(0xFF0D9488).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFF14B8A6).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF14B8A6).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('🔍', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Kök ve Ek Rehberi',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Ön ekler, kökler ve son ekler',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFF14B8A6),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF14B8A6)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SpacedRepetitionScreen()),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFF10B981).withOpacity(0.12),
+                  const Color(0xFF059669).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFF10B981).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF10B981).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('🔄', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Aralıklı Tekrar (Spaced Repetition)',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Akıllı algoritma ile kelimeleri unutma',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFF10B981),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF10B981)),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ClozeTestScreen()),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  const Color(0xFFF59E0B).withOpacity(0.12),
+                  const Color(0xFFD97706).withOpacity(0.06),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: const Color(0xFFF59E0B).withOpacity(0.2),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF59E0B).withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Center(
+                    child: Text('📊', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Cloze Test Atölyesi',
+                        style: GoogleFonts.outfit(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Metin içi boşluk doldurma (10 Soru)',
+                        style: GoogleFonts.inter(
+                          fontSize: 12,
+                          color: const Color(0xFFF59E0B),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFFF59E0B)),
               ],
             ),
           ),

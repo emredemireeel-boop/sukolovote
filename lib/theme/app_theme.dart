@@ -9,6 +9,7 @@ class AppTheme {
   static const Color accentEmerald = Color(0xFF10B981);
   static const Color accentAmber = Color(0xFFF59E0B);
   static const Color accentRose = Color(0xFFF43F5E);
+  static const Color primaryPink = Color(0xFFEC4899);
 
   // Dark Theme Colors
   static const Color darkBg = Color(0xFF0A0E21);

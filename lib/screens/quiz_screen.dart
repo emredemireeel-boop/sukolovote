@@ -1,7 +1,14 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/app_theme.dart';
 import '../data/questions_data.dart';
+import '../services/study_stats_service.dart';
+import '../services/mistake_service.dart';
+import '../services/daily_quest_service.dart';
 import '../widgets/glass_card.dart';
 import '../widgets/tappable_passage_text.dart';
 
@@ -18,8 +25,12 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
   int _currentQuestion = 0;
   int _correctAnswers = 0;
   int _wrongAnswers = 0;
-  int? _selectedAnswer;
-  bool _answered = false;
+  Map<int, int> _userAnswers = {};
+  bool _isLoading = true;
+  int _seed = 0;
+  
+  Timer? _timer;
+  int _elapsedSeconds = 0;
   late List<ExampleQuestion> _quizQuestions;
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
@@ -52,33 +63,137 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
       parent: _slideController,
       curve: Curves.easeOutCubic,
     ));
+
+    _loadProgress();
+  }
+
+  Future<void> _loadProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String keyPrefix = 'quiz_state_${widget.questionTypeId ?? "karma"}';
+    
+    _seed = prefs.getInt('${keyPrefix}_seed') ?? DateTime.now().millisecondsSinceEpoch;
+    _currentQuestion = prefs.getInt('${keyPrefix}_currentIndex') ?? 0;
+    _correctAnswers = prefs.getInt('${keyPrefix}_correct') ?? 0;
+    _wrongAnswers = prefs.getInt('${keyPrefix}_wrong') ?? 0;
+    
+    // Eğer önceki testi bitirdiyse sıfırla
+    if (_currentQuestion >= _quizQuestions.length) {
+      _currentQuestion = 0;
+      _correctAnswers = 0;
+      _wrongAnswers = 0;
+      _userAnswers.clear();
+      _seed = DateTime.now().millisecondsSinceEpoch;
+    }
+
+    final String? answersJson = prefs.getString('${keyPrefix}_answers');
+    if (answersJson != null) {
+      Map<String, dynamic> decoded = json.decode(answersJson);
+      _userAnswers = decoded.map((key, value) => MapEntry(int.parse(key), value as int));
+    }
+
+    _quizQuestions.shuffle(math.Random(_seed));
+    
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  Future<void> _saveProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String keyPrefix = 'quiz_state_${widget.questionTypeId ?? "karma"}';
+    await prefs.setInt('${keyPrefix}_seed', _seed);
+    await prefs.setInt('${keyPrefix}_currentIndex', _currentQuestion);
+    await prefs.setInt('${keyPrefix}_correct', _correctAnswers);
+    await prefs.setInt('${keyPrefix}_wrong', _wrongAnswers);
+    Map<String, int> stringKeyMap = _userAnswers.map((key, value) => MapEntry(key.toString(), value));
+    await prefs.setString('${keyPrefix}_answers', json.encode(stringKeyMap));
+  }
+
+  Future<void> _clearProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String keyPrefix = 'quiz_state_${widget.questionTypeId ?? "karma"}';
+    await prefs.remove('${keyPrefix}_seed');
+    await prefs.remove('${keyPrefix}_currentIndex');
+    await prefs.remove('${keyPrefix}_correct');
+    await prefs.remove('${keyPrefix}_wrong');
+    await prefs.remove('${keyPrefix}_answers');
   }
 
   @override
   void dispose() {
+    _timer?.cancel();
     _slideController.dispose();
     super.dispose();
   }
 
-  void _startQuiz() {
+  void _startTimer() {
+    _timer?.cancel();
+    _elapsedSeconds = 0;
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted) {
+        setState(() {
+          _elapsedSeconds++;
+        });
+      }
+    });
+  }
+
+  String get _formattedTime {
+    final m = (_elapsedSeconds ~/ 60).toString().padLeft(2, '0');
+    final s = (_elapsedSeconds % 60).toString().padLeft(2, '0');
+    return '$m:$s';
+  }
+
+  void _startQuiz({bool resume = false}) {
     setState(() {
       _quizStarted = true;
-      _currentQuestion = 0;
-      _correctAnswers = 0;
-      _wrongAnswers = 0;
-      _selectedAnswer = null;
-      _answered = false;
-      _quizQuestions.shuffle();
+      if (!resume) {
+        _currentQuestion = 0;
+        _correctAnswers = 0;
+        _wrongAnswers = 0;
+        _seed = DateTime.now().millisecondsSinceEpoch;
+        _quizQuestions.shuffle(math.Random(_seed));
+        _clearProgress();
+      }
+      _userAnswers.clear();
     });
+    _startTimer();
     _slideController.forward(from: 0);
   }
 
   void _selectAnswer(int index) {
-    if (_answered) return;
+    if (_userAnswers.containsKey(_currentQuestion)) return;
+    
+    final q = _quizQuestions[_currentQuestion];
+    final isCorrect = index == q.correctIndex;
+    
+    // Kayıtları tut
+    StudyStatsService.recordQuestion(
+      category: widget.questionTypeId != null 
+          ? questionTypes.firstWhere((t) => t.id == widget.questionTypeId).title 
+          : 'Karışık Quiz',
+      isCorrect: isCorrect,
+    );
+
+    if (!isCorrect) {
+      MistakeService.recordMistake(
+        question: q.question,
+        options: q.options,
+        correctIndex: q.correctIndex,
+        selectedIndex: index,
+        explanation: q.explanation,
+        passage: q.passage,
+        category: widget.questionTypeId != null 
+            ? questionTypes.firstWhere((t) => t.id == widget.questionTypeId).title 
+            : 'Karışık Quiz',
+      );
+    }
+    
+    DailyQuestService.progressQuest('q_questions_10', 1);
+
     setState(() {
-      _selectedAnswer = index;
-      _answered = true;
-      if (index == _quizQuestions[_currentQuestion].correctIndex) {
+      _userAnswers[_currentQuestion] = index;
+      if (isCorrect) {
         _correctAnswers++;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -111,18 +226,30 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
           ),
         );
       }
+      _saveProgress();
     });
+  }
+
+  void _prevQuestion() {
+    if (_currentQuestion > 0) {
+      setState(() {
+        _currentQuestion--;
+      });
+      _saveProgress();
+      _slideController.forward(from: 0);
+    }
   }
 
   void _nextQuestion() {
     if (_currentQuestion < _quizQuestions.length - 1) {
       setState(() {
         _currentQuestion++;
-        _selectedAnswer = null;
-        _answered = false;
       });
       _slideController.forward(from: 0);
+      _saveProgress();
     } else {
+      _timer?.cancel();
+      _clearProgress();
       _showResults();
     }
   }
@@ -269,10 +396,20 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    if (!_quizStarted) {
-      return _buildStartScreen();
+    if (_isLoading) {
+      return const Scaffold(
+        backgroundColor: AppTheme.darkBg,
+        body: Center(child: CircularProgressIndicator(color: AppTheme.primaryCyan)),
+      );
     }
-    return _buildQuizContent();
+
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: const BoxDecoration(gradient: AppTheme.bgGradient),
+        child: !_quizStarted ? _buildStartScreen() : _buildQuizContent(),
+      ),
+    );
   }
 
   Widget _buildStartScreen() {
@@ -369,10 +506,55 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                               color: Colors.white,
                             ),
                           ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.05),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.timer_outlined, size: 14, color: AppTheme.primaryCyan),
+                                const SizedBox(width: 4),
+                                Text(
+                                  _formattedTime,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppTheme.primaryCyan,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
+                  if (_currentQuestion > 0) ...[
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 56,
+                      child: OutlinedButton(
+                        onPressed: () => _startQuiz(resume: true),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.primaryCyan,
+                          side: const BorderSide(color: AppTheme.primaryCyan, width: 2),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Text(
+                          'Kaldığım Yerden Devam Et (${_currentQuestion + 1}/${_quizQuestions.length})',
+                          style: GoogleFonts.outfit(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -499,13 +681,14 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
 
                     // Options
                     ...question.options.asMap().entries.map((entry) {
-                      final isSelected = _selectedAnswer == entry.key;
+                      final bool isAnswered = _userAnswers.containsKey(_currentQuestion);
+                      final isSelected = _userAnswers[_currentQuestion] == entry.key;
                       final isCorrect = entry.key == question.correctIndex;
                       Color bgColor = Colors.white.withOpacity(0.04);
                       Color borderColor = Colors.white.withOpacity(0.08);
                       Color textColor = AppTheme.textSecondary;
 
-                      if (_answered) {
+                      if (isAnswered) {
                         if (isCorrect) {
                           bgColor = AppTheme.accentEmerald.withOpacity(0.12);
                           borderColor = AppTheme.accentEmerald.withOpacity(0.4);
@@ -544,10 +727,10 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                                   textColor: textColor,
                                 ),
                               ),
-                              if (_answered && isCorrect)
+                              if (isAnswered && isCorrect)
                                 const Icon(Icons.check_circle_rounded,
                                     color: AppTheme.accentEmerald, size: 20),
-                              if (_answered && isSelected && !isCorrect)
+                              if (isAnswered && isSelected && !isCorrect)
                                 const Icon(Icons.cancel_rounded,
                                     color: AppTheme.accentRose, size: 20),
                             ],
@@ -557,7 +740,7 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                     }),
 
                     // Explanation
-                    if (_answered) ...[
+                    if (_userAnswers.containsKey(_currentQuestion)) ...[
                       const SizedBox(height: 12),
                       Container(
                         padding: const EdgeInsets.all(16),
@@ -599,28 +782,59 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 52,
-                        child: ElevatedButton(
-                          onPressed: _nextQuestion,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppTheme.primaryCyan,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                      Row(
+                        children: [
+                          if (_currentQuestion > 0) ...[
+                            Expanded(
+                              child: SizedBox(
+                                height: 52,
+                                child: OutlinedButton(
+                                  onPressed: _prevQuestion,
+                                  style: OutlinedButton.styleFrom(
+                                    foregroundColor: AppTheme.primaryCyan,
+                                    side: BorderSide(color: AppTheme.primaryCyan.withOpacity(0.5)),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    '← Önceki',
+                                    style: GoogleFonts.outfit(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                          ],
+                          Expanded(
+                            flex: 2,
+                            child: SizedBox(
+                              height: 52,
+                              child: ElevatedButton(
+                                onPressed: _nextQuestion,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppTheme.primaryCyan,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                ),
+                                child: Text(
+                                  _currentQuestion < _quizQuestions.length - 1
+                                      ? 'Sonraki Soru →'
+                                      : 'Sonuçları Gör',
+                                  style: GoogleFonts.outfit(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                          child: Text(
-                            _currentQuestion < _quizQuestions.length - 1
-                                ? 'Sonraki Soru →'
-                                : 'Sonuçları Gör',
-                            style: GoogleFonts.outfit(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                        ],
                       ),
                     ],
                     const SizedBox(height: 20),

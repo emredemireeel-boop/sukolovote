@@ -70,6 +70,7 @@ class OxfordService {
       _cache = words;
       return words;
     } catch (e) {
+      print('OXFORD ERROR: $e');
       return const [];
     }
   }
